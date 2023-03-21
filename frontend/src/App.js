@@ -1,42 +1,30 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React,{useState} from 'react';
+import {BrowserRouter,Route,Routes} from 'react-router-dom';
 
-export default class App extends Component {
-  constructor(props){
-    super(props);
 
-    this.state={
-      posts:[]
-    };
 
-  }
+import Volunter from './components/project_management/Volunter';
+import Allproject from './components/project_management/Allprojects';
 
-componentDidMount(){
-  this.retrievePosts()
-}
 
-retrievePosts(){
-  axios.get("http://localhost:80/posts").then(res =>{
-    if(res.data.success){
-      this.setState({
-        posts:res.data.existingPosts
-      });
 
-      console.log(this.state.posts)
-    }
-  })
-}
+export default function App() {
+    const[search,setSearch] = useState("")
+    return(
 
-  render() {
-    return (
-      <div>
-        {this.state.posts.map(posts =>(
-          <div>
-            <p>{posts.blog_title}</p>
-            <p>{posts.description}</p>
-          </div>
-        ))}
-      </div>
+      <BrowserRouter>
+            <Routes>
+             
+       
+
+           
+              <Route path="/" element={<Volunter/>}></Route>            
+              <Route path="/All" element={<Allproject/>}></Route>
+            
+          
+           </Routes>     
+      </BrowserRouter>
+
     )
-  }
-} 
+
+}
