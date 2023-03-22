@@ -1,27 +1,27 @@
 const express = require('express');
-const Posts = require('../models/posts');
+const Products = require('../models/Products');
 
 const router = express.Router();
 
 //Save blogs
-router.post('/post/save',(req,res) =>{
-    let newPost = new Posts(req.body);
+router.post('/products/save',(req,res) =>{
+    let newProducts = new Products(req.body);
     
-    newPost.save((err) =>{
+    newProducts.save((err) =>{
         if(err){
             return res.status(400).json({
                 error:err
             });
         }
             return res.status(200).json({
-                success:"Blog saved successfully"
+                success:"Product added successfully"
         });
     });
 });
 
 //get blogs
-router.get('/posts',(req,res) =>{
-   Posts. find().exec((err,posts) =>{
+router.get('/products',(req,res) =>{
+    Products. find().exec((err,Products) =>{
     if(err){
         return res.status(400).json({
             error:err
@@ -29,19 +29,19 @@ router.get('/posts',(req,res) =>{
     }
     return res.status(200).json({
         success:true,
-        existingPosts:posts
+        existingProducts:Products
     });
    });
 });
 
 //Update blogs
-router.put('/post/update/:id',(req,res)=>{
-    Posts.findByIdAndUpdate(
+router.put('/products/update/:id',(req,res)=>{
+    Products.findByIdAndUpdate(
     req.params.id,
     {
         $set:req.body
     },
-    (err,post)=>{
+    (err,Products)=>{
         if(err){
             return res.status(400).json({error:err});
         }
@@ -54,14 +54,14 @@ router.put('/post/update/:id',(req,res)=>{
 });
 
 //delete blogs
-router.delete('/post/delete/:id',(req,res) =>{
-    Posts.findByIdAndRemove(req.params.id).exec((err,deletedPost) =>{
+router.delete('/products/delete/:id',(req,res) =>{
+    Products.findByIdAndRemove(req.params.id).exec((err,deletedProduct) =>{
 
         if(err) return res.status(400).json({
             message:"Delete Unsuccessful",err
         });
         return es.json({
-            message:"Delete Successful",deletedPost
+            message:"Delete Successful",deletedProduct
         });
     });
 })

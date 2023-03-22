@@ -6,23 +6,23 @@ export default class App extends Component {
     super(props);
 
     this.state={
-      posts:[]
+      products:[]
     };
 
   }
 
 componentDidMount(){
-  this.retrievePosts()
+  this.retrieveProducts()
 }
 
-retrievePosts(){
-  axios.get("http://localhost:8080/posts").then(res =>{
+retrieveProducts(){
+  axios.get("http://localhost:8080/products").then(res =>{
     if(res.data.success){
       this.setState({
-        posts:res.data.existingPosts
+        products:res.data.existingProducts
       });
 
-      console.log(this.state.posts)
+      console.log(this.state.products)
     }
   })
 }
@@ -30,10 +30,11 @@ retrievePosts(){
   render() {
     return (
       <div>
-        {this.state.posts.map(posts =>(
+        {this.state.products.map(Products =>(
           <div>
-            <p>{posts.blog_title}</p>
-            <p>{posts.description}</p>
+            <p>{Products.productname}</p>
+            <p>{Products.productdescription}</p>
+            <p>{Products.productprice}</p>
           </div>
         ))}
       </div>
