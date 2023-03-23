@@ -30,13 +30,23 @@ retrieveProducts(){
   render() {
     return (
       <div>
-        {this.state.products.map(Products =>(
-          <div>
-            <p>{Products.productname}</p>
-            <p>{Products.productdescription}</p>
-            <p>{Products.productprice}</p>
-          </div>
-        ))}
+         <p>ALL PRODUCTS</p>
+        
+        <table className='table'>
+          <thead>
+            <tr>
+              <th scope='col'>#</th>
+              <th scope='col'>Product Name</th>
+              <th scope='col'>Product Description</th>
+              <th scope='col'>Product Price</th>
+              <th scope='col'>Product Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+
       </div>
     )
   }
