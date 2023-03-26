@@ -1,5 +1,6 @@
 import React from 'react';
 import "../../styles/navBar.css";
+
 import HomeIcon from '@mui/icons-material/Home';
 import EditIcon from '@mui/icons-material/Edit';
 //import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
@@ -7,15 +8,12 @@ import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import MessageIcon from '@mui/icons-material/Message';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import ArticleIcon from '@mui/icons-material/Article';
-import { NavLink,BrowserRouter } from "react-router-dom";
+
+import { NavLink } from "react-router-dom";
 import Logo from  "../../image/logo.png"
-// import { fontFamily } from '@mui/system';
+
 
 export default function NavBar() {
-
-    // function refreshPage(){
-    //     window.location.reload(false);
-    //   }
 
 
     
@@ -32,20 +30,20 @@ export default function NavBar() {
             </div>
             <p className="hi">Hi !</p>
             
-      <BrowserRouter>
+
             <div className="nav_body">
                 <NavLink to="/" className="link_styles">
                     <div className="nav_link_wrapper">
-                        <HomeIcon className='iconcolor' fontSize="small" color='(18,120,35)' style={{ marginLeft: "45px" }} /><br/>
+                        <HomeIcon fontSize="small" className='iconcolor' color='(18,120,35)' style={{ marginLeft: "45px" }} /><br/>
                         <p className="nav_link clearfix"><b>HOME</b></p>
                     </div>
                 </NavLink>
             </div>
 
             <div className="nav_body">
-                <NavLink to="" className="link_styles">
+                <NavLink to="/" className="link_styles">
                     <div className="nav_link_wrapper">
-                        <EditIcon className='iconcolor' fontSize="small" style={{ marginLeft: "45px" }} /><br/>
+                        <EditIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} /><br/>
                         <p className="nav_link clearfix"><b>PROJECTS</b></p>
                     </div>
                     
@@ -55,35 +53,36 @@ export default function NavBar() {
             <div className="nav_body">
                 <NavLink to="/details" className="link_styles">
                     <div className="nav_link_wrapper">
-                        <ArticleIcon className='iconcolor' fontSize="small" style={{ marginLeft: "45px" }} /><br/>
-                        <p className="nav_link clearfix" style={{fontFamily:"times-new-romen"}}><b>BLOGS</b></p>
+                        <ArticleIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} /><br/>
+                        <p className="nav_link clearfix"><b>BLOGS</b></p>
                     </div>
+                    
                 </NavLink>
             </div>
 
 
             <div className="nav_body">
-                <NavLink to="" className="link_styles">
+                <NavLink to="/" className="link_styles">
                     <div className="nav_link_wrapper">
-                        <ShoppingBagIcon className='iconcolor' fontSize="small" style={{ marginLeft: "45px" }} /><br/>
+                        <ShoppingBagIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} /><br/>
                         <p className="nav_link clearfix"><b>PRODUCTS</b></p>
                     </div>
                 </NavLink>
             </div> 
 
             <div className="nav_body">
-                <NavLink to="" className="link_styles">
+                <NavLink to="/" className="link_styles">
                     <div className="nav_link_wrapper">
-                        <MessageIcon className='iconcolor' fontSize="small" style={{ marginLeft: "45px" }} /><br/>
+                        <MessageIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} /><br/>
                         <p className="nav_link clearfix"><b>POSTS</b></p>
                     </div>
                 </NavLink>
             </div>
 
             <div className="nav_body">
-                <NavLink to="" className="link_styles">
+                <NavLink to="/" className="link_styles">
                     <div className="nav_link_wrapper">
-                        <LocalPhoneIcon className='iconcolor' fontSize="small" style={{ marginLeft: "45px" }} /><br/>
+                        <LocalPhoneIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} /><br/>
                         <p className="nav_link clearfix"><b>CONTACT</b></p>
   
                     </div>
@@ -94,23 +93,31 @@ export default function NavBar() {
           
 
             <div className="login1">
-                <NavLink to="" className="login_s">
+                <NavLink to="/" className="login_s">
                 <div className="login_wrapper">
-                 <button type="submit" class="btn" ><b>LOGIN</b></button>
+                 <button type="submit" class="btn" >LOGIN</button>
                                 </div>
                 </NavLink>
             </div>
 
             
             <div className="login1">
-                <NavLink to="" className="login_s">
+                <NavLink to="/" className="login_s">
                 <div className="singup">
                  <button type="submit" class="btn" >You don't have an Account ?</button>
                  </div>
                 </NavLink>
             </div>
-            </BrowserRouter>
-   
+
+
+           
+
+            
+
+
+            
+        
+        
         </div>
 
 }
