@@ -1,42 +1,27 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import{BrowserRouter,Route} from 'react-router-dom'
+import CreateBlogs from './components/blogs_managment/CreateBlogs';
+import DetailsBlogs from './components/blogs_managment/DetailsBlogs';
+import EditBlogs from './components/blogs_managment/EditBlogs';
+import Home from './components/blogs_managment/Home';
+import BlogView from './components/blogs_managment/BlogView';
+// import NavBar from './components/NavBar';
 
-export default class App extends Component {
-  constructor(props){
-    super(props);
 
-    this.state={
-      posts:[]
-    };
+export default class App extends Component{
+  render(){
+    return(
+      <BrowserRouter>
+      {/* <NavBar/> */}
+        <div>
+          <Route path="/" exact component={Home}></Route>
+          <Route path="/add" exact component={CreateBlogs}></Route>
+          <Route path="/edit/:id" exact component={EditBlogs}></Route>
+          <Route path="/post/:id" exact component={DetailsBlogs}></Route>
+          <Route path="/details" exact component={BlogView}></Route>
+        </div>
 
-  }
-
-componentDidMount(){
-  this.retrievePosts()
-}
-
-retrievePosts(){
-  axios.get("http://localhost:8080/posts").then(res =>{
-    if(res.data.success){
-      this.setState({
-        posts:res.data.existingPosts
-      });
-
-      console.log(this.state.posts)
-    }
-  })
-}
-
-  render() {
-    return (
-      <div>
-        {this.state.posts.map(posts =>(
-          <div>
-            <p>{posts.blog_title}</p>
-            <p>{posts.description}</p>
-          </div>
-        ))}
-      </div>
+      </BrowserRouter>
     )
   }
-} 
+}

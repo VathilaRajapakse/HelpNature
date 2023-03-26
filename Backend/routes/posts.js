@@ -34,6 +34,22 @@ router.get('/posts',(req,res) =>{
    });
 });
 
+//get specific blogs
+router.get("/post/:id",(req,res) =>{
+    let postId = req.params.id;
+
+    Posts.findById(postId,(err,post) =>{
+        if(err){
+            return res.status(400).json({success:false,err});
+        }
+        return res.status(200).json({
+            success:true,
+            post
+        });
+    });
+    
+});
+
 //Update blogs
 router.put('/post/update/:id',(req,res)=>{
     Posts.findByIdAndUpdate(
@@ -60,10 +76,11 @@ router.delete('/post/delete/:id',(req,res) =>{
         if(err) return res.status(400).json({
             message:"Delete Unsuccessful",err
         });
-        return es.json({
+        return res.json({
             message:"Delete Successful",deletedPost
         });
     });
 })
+
 
 module.exports = router;
