@@ -66,4 +66,25 @@ router.delete('/products/delete/:id',(req,res) =>{
     });
 })
 
+
+
+//get specific product
+router.get('/products/:id',(req,res) =>{
+
+    let productId = req.params.id;
+
+    Products. findById(productId,(err,Products)=>  {
+    if(err){
+        return res.status(400).json({
+            success:false, err
+        });
+    }
+    return res.status(200).json({
+        success:true,
+        Products
+    });
+   });
+});
+
+
 module.exports = router;
