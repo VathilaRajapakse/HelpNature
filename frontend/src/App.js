@@ -1,53 +1,39 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React,{useState} from 'react';
+import {BrowserRouter,Route,Routes} from 'react-router-dom';
 
-export default class App extends Component {
-  constructor(props){
-    super(props);
 
-    this.state={
-      products:[]
-    };
+import AddProducts from './components/product_management/AddProducts';
+import EditProducts from './components/product_management/EditProducts';
+import MyProducts from './components/product_management/MyProducts';
+import ProductDetails from './components/product_management/ProductDetails';
+import Pcard from './components/product_management/Pcard';
+import Products from './components/product_management/Products';
 
-  }
 
-componentDidMount(){
-  this.retrieveProducts()
-}
 
-retrieveProducts(){
-  axios.get("http://localhost:8080/products").then(res =>{
-    if(res.data.success){
-      this.setState({
-        products:res.data.existingProducts
-      });
+export default function App() {
+    const[search,setSearch] = useState("")
+    return(
 
-      console.log(this.state.products)
-    }
-  })
-}
+      <BrowserRouter>
+            <Routes>
+             
+       
 
-  render() {
-    return (
-      <div>
-         <p>ALL PRODUCTS</p>
-        
-        <table className='table'>
-          <thead>
-            <tr>
-              <th scope='col'>#</th>
-              <th scope='col'>Product Name</th>
-              <th scope='col'>Product Description</th>
-              <th scope='col'>Product Price</th>
-              <th scope='col'>Product Price</th>
-            </tr>
-          </thead>
-          <tbody>
+           
+              {/* <Route path="/" element={<MyProducts/>}></Route>             */}
+              <Route path="/add" element={<AddProducts/>}></Route>
+              <Route path="/edit" element={<EditProducts/>}></Route>
+              <Route path="/det" element={<ProductDetails/>}></Route>
+
+              <Route path="/car" element={<Pcard/>}></Route>
+
+              <Route path="/" element={<Products/>}></Route>
             
-          </tbody>
-        </table>
+          
+           </Routes>     
+      </BrowserRouter>
 
-      </div>
     )
-  }
-} 
+
+}
