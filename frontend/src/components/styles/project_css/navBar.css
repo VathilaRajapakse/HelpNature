@@ -17,7 +17,7 @@
   margin-top: 1px;
 }
 .nav_main_container {
-    width: 35%;
+    width: 32%;
     height: 100vh;
     background-color: rgb(255, 255, 255);
     color: rgb(255, 255, 255);
@@ -114,4 +114,8 @@
 .singup{
  margin-left: 10px;
   margin-top: -20px;
+}
+
+.iconcolor{
+  color: rgb(18, 120, 35);
 }
