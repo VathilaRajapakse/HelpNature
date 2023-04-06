@@ -107,17 +107,7 @@ export default function NavBar() {
                  <button type="submit" class="btn" >You don't have an Account ?</button>
                  </div>
                 </NavLink>
-            </div>
-
-
-           
-
-            
-
-
-            
-        
-        
+            </div>     
         </div>
 
 }
