@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 
 //import routes
-const postRoutes = require('./routes/posts');
+const postRoutes = require('./routes/Post');
 //app middleware
 app.use(bodyParser.json());
 app.use(cors());
@@ -15,7 +15,7 @@ app.use(cors());
 app.use(postRoutes);
 
 const PORT = 8080;
-const DB_URL = 'mongodb+srv://it21066016:vathila143@helpnature.td9rjdp.mongodb.net/?retryWrites=true&w=majority';
+const DB_URL = 'mongodb+srv://Pavani:pavani@helpnature.td9rjdp.mongodb.net/?retryWrites=true&w=majority';
 
 mongoose.connect(DB_URL,{
     useNewUrlParser:true,

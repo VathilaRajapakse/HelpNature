@@ -1,26 +1,26 @@
 const express = require('express');
-const Posts = require('../models/posts');
+const Posts = require('../models/Post');
 
 const router = express.Router();
 
-//Save blogs
+//Save post
 router.post('/post/save',(req,res) =>{
     let newPost = new Posts(req.body);
     
     newPost.save((err) =>{
-        if(err){
+        if(err){cs
             return res.status(400).json({
                 error:err
             });
         }
             return res.status(200).json({
-                success:"Blog saved successfully"
+                success:" successfully posted"
         });
     });
 });
 
-//get blogs
-router.get('/posts',(req,res) =>{
+//get post
+router.get('/post',(req,res) =>{
    Posts. find().exec((err,posts) =>{
     if(err){
         return res.status(400).json({
@@ -34,26 +34,43 @@ router.get('/posts',(req,res) =>{
    });
 });
 
-//Update blogs
+//get specific details
+
+router.get("/post/:id",(req,res)=>{
+    let PreId = req.params.id;
+
+    Posts.findById(PreId,(err,posts)=>{
+        if(err){
+            return res.status(400).json({success:false,err});
+        }
+
+        return res.status(200).json({
+            success:true,
+            posts
+        });
+    });
+ });
+
+//Update post
 router.put('/post/update/:id',(req,res)=>{
     Posts.findByIdAndUpdate(
     req.params.id,
     {
         $set:req.body
     },
-    (err,post)=>{
+    (err,Post)=>{
         if(err){
             return res.status(400).json({error:err});
         }
         return res.status(200).json({
-            success:"Updated Successfully"
+            success:"Post Updated Successfully"
         });
     }
 
     );
 });
 
-//delete blogs
+//delete post
 router.delete('/post/delete/:id',(req,res) =>{
     Posts.findByIdAndRemove(req.params.id).exec((err,deletedPost) =>{
 

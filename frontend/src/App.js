@@ -1,42 +1,38 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React,{useState} from 'react';
+import {BrowserRouter,Route,Routes} from 'react-router-dom';
 
-export default class App extends Component {
-  constructor(props){
-    super(props);
 
-    this.state={
-      posts:[]
-    };
 
-  }
+import CreatePost from './components/post_management/createPost';
+import ViewPost from './components/post_management/viewPost';
+import Create from './components/post_management/Create';
+import Update from './components/post_management/updatePost';
+// import Allpost from './components/post_management/Allpost';
+import HomePost from './components/post_management/homePost';
 
-componentDidMount(){
-  this.retrievePosts()
-}
+export default function App() {
+    // const[search,setSearch] = useState("")
+    return(
 
-retrievePosts(){
-  axios.get("http://localhost:8080/posts").then(res =>{
-    if(res.data.success){
-      this.setState({
-        posts:res.data.existingPosts
-      });
+      <BrowserRouter>
+            <Routes>
+             
+       
 
-      console.log(this.state.posts)
-    }
-  })
-}
+           
+              <Route path="/" element={<ViewPost/>}></Route>            
+              <Route path="/All" element={<CreatePost/>}></Route>
+              <Route path="/create" element={<Create/>}></Route>
+              <Route path="/update/:id" element={<Update/>}></Route>
+              {/* <Route path="/allpost" element={<Allpost/>}></Route> */}
+              <Route path="/homePost" element={<HomePost/>}></Route>
+            
+            
+            
+          
+           </Routes>     
+      </BrowserRouter>
 
-  render() {
-    return (
-      <div>
-        {this.state.posts.map(posts =>(
-          <div>
-            <p>{posts.blog_title}</p>
-            <p>{posts.description}</p>
-          </div>
-        ))}
-      </div>
     )
-  }
-} 
+
+}
