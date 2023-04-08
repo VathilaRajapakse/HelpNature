@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from "./blogs_managment/Blogs_navBar";
 import "../styles/registration.css";
+import Sidebar from "./blogs_managment/Sidebar";
 
 
 export default function Registration() {
@@ -113,12 +114,20 @@ export default function Registration() {
               }} required/>
               </div><br/>
 
-              <input  type="submit" id="joinBtn"  value="Register"></input><br/><br/>
-              <lable className="l1"><b>Click here to add you details.</b></lable><br/>
+              <div className='discription-container'>
+              <label for="password"><b>Confirm Password:</b></label><br/> 
+              <input type="text" id="password" className="valuesV" name="password"  onChange={(event)=>{
+                  setpassword(event.target.value);
+              }} required/>
+              </div><br/>
+
+              <input  type="submit" id="joinBtn"  value="REGISTER"></input><br/><br/>
+              
             
               </form>
+              
         </div>
-        
+       
 
         
     </div>

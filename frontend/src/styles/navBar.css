@@ -120,3 +120,47 @@
 .iconcolor{
   color: rgb(18, 120, 35);
 }
+
+.drop-down-navbar{
+  color: black;
+  font-weight: bolder;
+  width: 20px;
+  border-color: white;
+}
+
+.dropdown-fonts{
+  font-size:20px;
+  color: rgb(0, 0, 0);
+  width: 200px;
+  background-color:rgb(230,231,199);
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+.dropdown-fonts-account{
+  color: #000;
+  font-weight: bolder;
+  background-color:rgb(230,231,199);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.logout-btn{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: medium;
+  color: #000;
+  border-color: white;
+  width: auto;
+  margin-left: -15px;
+}
+
+.login_s{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: medium;
+  color: #000;
+  background-color: white;
+  border-color: white;
+  padding: auto;
+
+}

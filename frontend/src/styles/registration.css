@@ -47,9 +47,9 @@
 
 #joinBtn{
 	color: white;
-    background-color: rgb(62, 80, 65);
+    background-color:rgb(18, 120, 35);
 	height: 40px;
-	width: 100px;
+	width: 200px;
     border-radius: 10px;
 }
 #joinBtn:hover {

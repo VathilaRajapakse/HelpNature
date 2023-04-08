@@ -93,8 +93,8 @@ export default function MemberLogin() {
                       </label>
                     </div>
                     <div>
-                      <a href="#" class="txt1">
-                        Forgot Password?
+                      <a href="/registration" class="txt1">
+                        Don't have an Account ?
                       </a>
                     </div>
                   </div>

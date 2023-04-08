@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import "../../styles/navBar.css";
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -11,11 +11,27 @@ import ArticleIcon from '@mui/icons-material/Article';
 
 import { NavLink } from "react-router-dom";
 import Logo from  "../../image/logo.png"
+import { Button } from '@mui/material';
 
+
+// const [selects,setSelects] = useState();
 
 export default function NavBar() {
 
+    const [userName, setUserName] = useState(localStorage.getItem('userName'));
 
+    const handleLogout = () => {
+        // Remove user authentication data from local storage
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('userName');
+        setUserName(null);
+      };
+   
+      const handleLogoutSelect = (event) => {
+        if (event.target.value === "Logout") {
+          handleLogout();
+        }
+      };
     
 
     return <div className="nav_main_container">
@@ -28,7 +44,21 @@ export default function NavBar() {
                 <p className="nav_heading_text">helpNature</p>
                
             </div>
-            <p className="hi">Hi !</p>
+            <p className="hi">
+        {userName ? `Welcome Back ${userName}! ` : "Hi!"}
+        <select className="drop-down-navbar" onChange={handleLogoutSelect}>
+          <option className="dropdown-fonts-account">My Account</option>
+          <option className="dropdown-fonts">Posts</option>
+          <option className="dropdown-fonts">Blogs</option>
+          <option className="dropdown-fonts">Products</option>
+          <option className="dropdown-fonts">Projects</option>
+          {userName && (
+            <option className="dropdown-fonts" value="Logout">
+              Logout
+            </option>
+          )}
+        </select>
+      </p>
             
 
             <div className="nav_body">
@@ -93,16 +123,24 @@ export default function NavBar() {
           
 
             <div className="login1">
-                <NavLink to="/" className="login_s">
-                <div className="login_wrapper">
-                 <button type="submit" class="btn" >LOGIN</button>
-                                </div>
-                </NavLink>
-            </div>
+  <div className="login_wrapper">
+    {userName ? (
+      <p type="button" class="logout-btn" onClick={handleLogout}>
+        Logout {userName}!
+      </p>
+    ) : (
+      <NavLink to="/Login">
+        <p className="login_s" type="button">
+          LOGIN
+        </p>
+      </NavLink>
+    )}
+  </div>
+</div>
 
             
             <div className="login1">
-                <NavLink to="/" className="login_s">
+                <NavLink to="/registration" className="login_s">
                 <div className="singup">
                  <button type="submit" class="btn" >You don't have an Account ?</button>
                  </div>
