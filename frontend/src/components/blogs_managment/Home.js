@@ -61,7 +61,7 @@ export default function Allprojects() {
           </div>
         </div>
         <button className="blog-create">
-          <a href="/add" style={{ textDecoration: "none", color: "white" }}>
+          <a href="/blog/add" style={{ textDecoration: "none", color: "white" }}>
           + BECOME A BLOGGER
           </a>
         </button>
