@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 import Card from "./card";
 import "../../styles/home.css";
 import "../../styles/navBar.css";
-import "../../styles/common.css";
+// import "../../styles/common.css";
 import "../../styles/header.css";
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -55,7 +55,7 @@ export default function Allprojects() {
               <input
                 onChange={searchBlogs}
                 type="search"
-                placeholder="              Search"
+                placeholder="    Search"
                 className="search-box-blogs"
               />
           </div>

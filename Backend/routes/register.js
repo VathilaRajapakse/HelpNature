@@ -11,7 +11,7 @@ router.route("/register/save").post(async (req,res, next) => {
     let existingUser;
 
     try{
-        existingUser = await Doctor.findOne({ userName: userName });
+        existingUser = await Member.findOne({ userName: userName });
     }catch(error) {
         console.log(error);
     }

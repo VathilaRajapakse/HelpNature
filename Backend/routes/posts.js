@@ -83,4 +83,46 @@ router.delete('/post/delete/:id',(req,res) =>{
 })
 
 
+// Update image
+router.put('/image/update/:id', (req, res) => {
+    let imageId = req.params.id;
+  
+    Images.findByIdAndUpdate(imageId, {
+      $set: req.body
+    }, (err, image) => {
+      if (err) {
+        return res.status(400).json({
+          success: false,
+          error: err
+        });
+      }
+  
+      return res.status(200).json({
+        success: true,
+        message: 'Image updated successfully'
+      });
+    });
+  });
+  
+  // Delete image
+  router.delete('/image/delete/:id', (req, res) => {
+    let imageId = req.params.id;
+  
+    Images.findByIdAndRemove(imageId, (err, image) => {
+      if (err) {
+        return res.status(400).json({
+          success: false,
+          error: err
+        });
+      }
+  
+      return res.status(200).json({
+        success: true,
+        message: 'Image deleted successfully'
+      });
+    });
+  });
+  
+
+
 module.exports = router;

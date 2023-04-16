@@ -37,6 +37,8 @@
 font-size:70%;
 margin-top: -38px;
 margin-left: 60px;
+
+
 }
 
 .search-box-blogs{
@@ -46,6 +48,9 @@ margin-left: 60px;
   height: 25px;
   border-radius: 8px;
   background-color: rgb(216,231,218);
+  padding-left: 10px;
+  border: 1px solid black
+  
   /* margin-top: -00px; */
 }
 

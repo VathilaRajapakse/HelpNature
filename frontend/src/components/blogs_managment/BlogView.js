@@ -4,20 +4,23 @@ import axios from "axios";
 import NavBar from "./Blogs_navBar";
 import "../../styles/home.css";
 import "../../styles/navBar.css";
-// import "../../styles/common.css";
-// import "../../styles/header.css";
+import"../../styles/BlogView.css"
 import Image from "../../image/Wild.png";
 import Sidebar from "./Sidebar";
-import Card from "./card";
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Box } from "@mui/material";
+import Card from "./blogEditcard";
+import { grey } from '@mui/material/colors';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import {Button,Dialog,DialogTitle,DialogContent,DialogActions,Box,} from "@mui/material";
 
-export default function Allprojects() {
+export default function AllProjects(props) {
   const [blogs, setBlogs] = useState([]);
   const [deleteBlog, setDeleteBlog] = useState(false);
   const [blogToDelete, setBlogToDelete] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/posts/`)
+    axios
+      .get(`http://localhost:8080/posts/`)
       .then((res) => {
         console.log(res.data);
         setBlogs(res.data.existingPosts);
@@ -34,7 +37,10 @@ export default function Allprojects() {
 
   async function confirmDeleteBlog() {
     try {
-      await axios.delete(`http://localhost:8080/post/delete/${blogToDelete._id}`, {});
+      await axios.delete(
+        `http://localhost:8080/post/delete/${blogToDelete._id}`,
+        {}
+      );
       setDeleteBlog(false);
       setBlogToDelete(null);
       setBlogs(blogs.filter((blog) => blog._id !== blogToDelete._id));
@@ -46,35 +52,39 @@ export default function Allprojects() {
   return (
     <div className="main1-container">
       <NavBar />
-      <div className="card-track"> 
+      <div className="card-track">
         <h3 className="title-name">BLOGS</h3>
         {blogs.map((blog, index) => (
           <div key={index}>
-            <Card topic={blog.blog_title} description={blog.description} />
-            <a className="btn btn-warning" href={`/edit/${blog._id}`}>
-              <i className="fas fa-edit"></i>&nbsp;Edit
-            </a>&nbsp;&nbsp;&nbsp;
-            <Button variant="contained" color="secondary" onClick={() => handleDeleteBlog(blog)}>
-              Delete
-            </Button>
+            <div className="cardbody">
+            <figure>
+              <img src={Image} width={"250px"} height={"300px"} alt="Mountains" />
+              <figcaption>
+                <EditIcon onClick={() => props.onEdit && props.onEdit(props)} sx={{ fontSize: 40, color: grey[500]}}/>
+                <DeleteIcon sx={{ fontSize: 40, color: grey[500]}}/>
+              </figcaption>
+            </figure>
+            </div>
           </div>
         ))}
-        
       </div>
       <Dialog open={deleteBlog} onClose={() => setDeleteBlog(false)}>
         <DialogTitle>Warning!</DialogTitle>
-        <DialogContent>
-          Are you sure you want to delete the blog?
-        </DialogContent>
+        <DialogContent>Are you sure you want to delete the blog?</DialogContent>
         <DialogActions>
           <Box sx={{ m: 1, position: "relative" }}>
-            <Button variant="contained" onClick={() => confirmDeleteBlog()} autoFocus color="secondary">
+            <Button
+              variant="contained"
+              onClick={() => confirmDeleteBlog()}
+              autoFocus
+              color="secondary"
+            >
               Confirm
             </Button>
           </Box>
         </DialogActions>
       </Dialog>
-      <Sidebar/>
+      <Sidebar />
     </div>
   );
 }

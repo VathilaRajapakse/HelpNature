@@ -234,3 +234,13 @@ margin-top: 5px;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.auth-name{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: large;
+  margin-left: 60px;
+  margin-top: 5px;
+  margin-bottom: -10px;
+  
+}

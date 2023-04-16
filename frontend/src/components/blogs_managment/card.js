@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import "../../styles/card.css";
 import Image from "../../image/Wild.png";
 import axios from "axios";
+import LikeButton from "../blogs_managment/likebutton";
 
 
 function Card(props) {
     const [seeMore,setSeeMore]= useState(true)
     const [blogs, setblogs] = useState([]);
+    const [userName, setUserName] = useState(localStorage.getItem('userName'));
 
 
 
@@ -62,7 +64,13 @@ function Card(props) {
 
 
   return ( 
+    <div> 
+      <div className="auth-name">
+      {userName ? `${userName}`:""}
+      </div>
+
       <div className="card-container">
+             
         <div className="image-container">
           <img src={Image} alt="image" className="image" />
         </div>
@@ -75,10 +83,12 @@ function Card(props) {
           </p>
         </div>
         <div className="action-container">
-          <label>Like</label>
+          {/* <label>Like</label> */}
+          <LikeButton/>
           <button className="Read-more"onClick={()=> setSeeMore(!seeMore)}>{seeMore?"Read more":"Less more"}</button>       
         </div>
         
+      </div>
       </div>
    
   );
