@@ -12,16 +12,16 @@ function Card(props) {
   // const userName = localStorage.getItem('userName');
 
   useEffect(() => {
-    // async function fetchData() {
-    //   try {
-    //     const response = await axios.get(`http://localhost:8080/posts/`);
-    //     console.log(response.data);
-    //     setBlogs(response.data.existingPosts);
-    //   } catch (err) {
-    //     alert(err.message);
-    //   }
-    // }
-    // fetchData();
+    async function fetchData() {
+      try {
+        const response = await axios.get(`http://localhost:8080/posts/`);
+        console.log(response.data);
+        setBlogs(response.data.existingPosts);
+      } catch (err) {
+        alert(err.message);
+      }
+    }
+    fetchData();
   }, []);
 
   // refresh page

@@ -13,6 +13,7 @@ export default class CreateBlogs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        blogger_name:"",
         blog_title: "",
         description: "",
       
@@ -32,6 +33,7 @@ export default class CreateBlogs extends React.Component {
     e.preventDefault();
 
     const {
+        blogger_name,
         blog_title,
         description,
      
@@ -41,9 +43,11 @@ export default class CreateBlogs extends React.Component {
       alert("blog title cannot be empty !");
     } else if(description.trim().length===0){
       alert("description cannot be empty !");
+    } else if(blogger_name.trim().length===0){
+      alert("name cannot be empty !");
     }
-
     const data = {
+        blogger_name:blogger_name,
         blog_title: blog_title,
         description: description,
     };
@@ -55,6 +59,7 @@ export default class CreateBlogs extends React.Component {
       .then((res) => {
         if (res.data.success) {
           this.setState({
+            blogger_name:"",
             blog_title: "",
             description: "",
             
@@ -71,7 +76,21 @@ export default class CreateBlogs extends React.Component {
             <div className="card-track">     
             <h3 className="blog-title-sub">BLOGS</h3> 
             <h6 className="blog-title-sub-2">Create Blogs</h6>
-            <form className="blog-form">                          
+            <form className="blog-form">   
+                <div className="blog-item">
+                  <label className="blog-label" for="name">
+                    Blogger name
+                  </label>
+                  <input
+                    className="blog-half-item"
+                    type="text"
+                    name="blogger_name"
+                    id="name"
+                    value={this.state.blogger_name}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                </div>                       
                 <div className="blog-item">
                   <label className="blog-label" for="name">
                     Blog title

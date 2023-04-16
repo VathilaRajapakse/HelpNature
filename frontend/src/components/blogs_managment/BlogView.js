@@ -4,19 +4,28 @@ import axios from "axios";
 import NavBar from "./Blogs_navBar";
 import "../../styles/home.css";
 import "../../styles/navBar.css";
-import"../../styles/BlogView.css"
+import "../../styles/BlogView.css";
 import Image from "../../image/Wild.png";
 import Sidebar from "./Sidebar";
 import Card from "./blogEditcard";
-import { grey } from '@mui/material/colors';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import {Button,Dialog,DialogTitle,DialogContent,DialogActions,Box,} from "@mui/material";
+import { lightBlue } from "@mui/material/colors";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { Link } from "react-router-dom";
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Box,
+} from "@mui/material";
 
-export default function AllProjects(props) {
+export default function AllProjects() {
   const [blogs, setBlogs] = useState([]);
   const [deleteBlog, setDeleteBlog] = useState(false);
   const [blogToDelete, setBlogToDelete] = useState(null);
+  const [postid, setpostid] = useState("");
 
   useEffect(() => {
     axios
@@ -34,21 +43,36 @@ export default function AllProjects(props) {
     setBlogToDelete(blog);
     setDeleteBlog(true);
   }
-
-  async function confirmDeleteBlog() {
-    try {
-      await axios.delete(
-        `http://localhost:8080/post/delete/${blogToDelete._id}`,
-        {}
-      );
-      setDeleteBlog(false);
-      setBlogToDelete(null);
-      setBlogs(blogs.filter((blog) => blog._id !== blogToDelete._id));
-    } catch (err) {
-      alert(err.message);
+  const confirmDeletebox = (id) => {
+    setDeleteBlog(true);
+    setpostid(id);
+  };
+  async function confirmDeleteBlog(val) {
+    if ((val = "delete")) {
+      try {
+        await axios
+          .delete(`http://localhost:8080/post/delete/${postid}`)
+          .then((res) => {
+            alert("Deleted Successful");
+            window.location.reload();
+          });
+      } catch (err) {
+        alert(err.message);
+      }
     }
   }
-
+  // const updatehandler = async () => {
+  //   try {
+  //     await axios
+  //       .put(`http://localhost:8080/post/update/${postid}`)
+  //       .then((res) => {
+  //         alert("Deleted Successful");
+  //         window.location.reload();
+  //       });
+  //   } catch (err) {
+  //     alert(err.message);
+  //   }
+  // };
   return (
     <div className="main1-container">
       <NavBar />
@@ -57,13 +81,23 @@ export default function AllProjects(props) {
         {blogs.map((blog, index) => (
           <div key={index}>
             <div className="cardbody">
-            <figure>
-              <img src={Image} width={"250px"} height={"300px"} alt="Mountains" />
-              <figcaption>
-                <EditIcon onClick={() => props.onEdit && props.onEdit(props)} sx={{ fontSize: 40, color: grey[500]}}/>
-                <DeleteIcon sx={{ fontSize: 40, color: grey[500]}}/>
-              </figcaption>
-            </figure>
+              <figure>
+                <img
+                  src={Image}
+                  width={"250px"}
+                  height={"300px"}
+                  alt="Mountains"
+                />
+                <figcaption>
+                  <Link to={"/edit/" + blog._id}>
+                    <EditIcon sx={{marginTop:-10 ,marginLeft:5, fontSize: 40, color: lightBlue[50] }} />
+                  </Link>
+                  <DeleteIcon
+                    onClick={() => confirmDeletebox(blog._id)}
+                    sx={{marginBottom:5.5,marginLeft:7, fontSize: 40, color: lightBlue[50] }}
+                  />
+                </figcaption>
+              </figure>
             </div>
           </div>
         ))}
@@ -75,7 +109,7 @@ export default function AllProjects(props) {
           <Box sx={{ m: 1, position: "relative" }}>
             <Button
               variant="contained"
-              onClick={() => confirmDeleteBlog()}
+              onClick={() => confirmDeleteBlog("delete")}
               autoFocus
               color="secondary"
             >

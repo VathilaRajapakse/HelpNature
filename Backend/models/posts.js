@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
+    blogger_name:{
+        type:String,
+        required:true
+    },
 
     blog_title:{
         type:String,

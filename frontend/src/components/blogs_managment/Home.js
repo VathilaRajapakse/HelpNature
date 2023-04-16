@@ -66,7 +66,7 @@ export default function Allprojects() {
           </a>
         </button>
         {filteredBlogs.map((blog, index) => (
-          <Card key={index} topic={blog.blog_title} description={blog.description} />
+          <Card key={index} blogger_name={blog.blogger_name} topic={blog.blog_title} description={blog.description} />
         ))}
       </div>
       <Sidebar />

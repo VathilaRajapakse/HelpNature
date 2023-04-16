@@ -11,12 +11,16 @@ export default function Update() {
   const { id } = useParams();
   const [blog_title, setblog] = useState("");
   const [description, setdes] = useState();
+  const [blogger_name, setblogger] = useState("");
+
   
   useEffect(() => {
     axios.get(`http://localhost:8080/post/`+ id).then(
       (getData, res) => {
         setblog(getData.data.post.blog_title);
         setdes(getData.data.post.description);
+        setblogger(getData.data.post.blogger_name);
+
     
         //console.log(getData.data.post.blog_title);
       }
@@ -27,7 +31,8 @@ export default function Update() {
   const sendDataToAPI = () => {
     const data = {
       blog_title,
-      description,     
+      description,  
+      blogger_name   
     };
     axios.put(`http://localhost:8080/post/update/${id}`, data)
       .then((res) => {
@@ -48,7 +53,21 @@ export default function Update() {
 
       <div className="dropdown" ></div>
       
-      <form className="blog-edit-form">              
+      <form className="blog-edit-form">            
+
+      <div className="blog-edit-item">
+            <label className="blog-edit-label" for="name">
+              Blogger Name
+            </label>
+            <input className="blog-edit-half-item"
+                  type="text"
+                  name="blog_name"
+                  id="name1"
+                  value={blogger_name}
+                  onChange={(e) => setblogger(e.target.value)}
+                  
+                />
+          </div>  
         
           <div className="blog-edit-item">
             <label className="blog-edit-label" for="name">
