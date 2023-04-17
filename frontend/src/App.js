@@ -11,6 +11,7 @@ import Products from './components/product_management/Products';
 
 
 
+
 export default function App() {
     const[search,setSearch] = useState("")
     return(
@@ -22,13 +23,16 @@ export default function App() {
 
            
               {/* <Route path="/" element={<MyProducts/>}></Route>             */}
+              <Route path="/" element={<Products/>}></Route>
               <Route path="/add" element={<AddProducts/>}></Route>
-              <Route path="/edit" element={<EditProducts/>}></Route>
-              <Route path="/det" element={<ProductDetails/>}></Route>
+              <Route path="/edit/:id" element={<EditProducts/>}></Route>
+              <Route path="/det/:id" element={<ProductDetails/>}></Route>
+              <Route path="/myproducts" element={<MyProducts/>}></Route>
+
 
               <Route path="/car" element={<Pcard/>}></Route>
 
-              <Route path="/" element={<Products/>}></Route>
+              
             
           
            </Routes>     
