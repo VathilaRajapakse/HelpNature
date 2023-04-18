@@ -27,8 +27,8 @@ export default function Allprojects() {
       });
   }, []);
 
-  function handleDeletePost(blog) {
-    setPostToDelete(blog);
+  function handleDeletePost(post) {
+    setPostToDelete(post);
     setDeletePost(true);
   }
 
@@ -37,7 +37,7 @@ export default function Allprojects() {
       await axios.delete(`http://localhost:8080/post/delete/${postToDelete._id}`, {});
       setDeletePost(false);
       setPostToDelete(null);
-      setPosts(posts.filter((blog) => blog._id !== postToDelete._id));
+      setPosts(posts.filter((post) => post._id !== postToDelete._id));
     } catch (err) {
       alert(err.message);
     }
@@ -48,13 +48,13 @@ export default function Allprojects() {
       <NavBar />
       <div className="card-track"> 
         <h3 className="title-name">POST</h3>
-        {posts.map((blog, index) => (
+        {posts.map((post, index) => (
           <div key={index}>
-            <Card topic={blog.blog_title} description={blog.description} />
-            <a className="btn btn-warning" href={`/edit/${blog._id}`}>
+            <Card  description={post.description} />
+            <a className="btn btn-warning" href={`/update/${post._id}`}>
               <i className="fas fa-edit"></i>&nbsp;Edit
             </a>&nbsp;&nbsp;&nbsp;
-            <Button variant="contained" color="secondary" onClick={() => handleDeletePost(blog)}>
+            <Button variant="contained" color="secondary" onClick={() => handleDeletePost(post)}>
               Delete
             </Button>
           </div>

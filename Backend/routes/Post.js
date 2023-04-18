@@ -21,7 +21,7 @@ router.post('/post/save',(req,res) =>{
 
 //get post
 router.get('/post',(req,res) =>{
-   Posts. find().exec((err,posts) =>{
+   Posts. find({}).exec((err,posts) =>{
     if(err){
         return res.status(400).json({
             error:err
@@ -77,7 +77,7 @@ router.delete('/post/delete/:id',(req,res) =>{
         if(err) return res.status(400).json({
             message:"Delete Unsuccessful",err
         });
-        return es.json({
+        return res.json({
             message:"Delete Successful",deletedPost
         });
     });

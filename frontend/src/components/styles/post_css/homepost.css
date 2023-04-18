@@ -18,25 +18,25 @@
   }
 
 .post-create{
-    margin-left:340px;
+    margin-left:250px;
     background-color: rgb(81, 170, 95);
     font-family: 'Times New Roman', Times, serif;
     font-size:small;
     height: 30px;
     width: 160px;
-    border-radius: 10px;
-     
+    border-radius: 10px;  
 }
 
 .title-name{
-    margin-left: 55px;
+    margin-left: 20px;
+    margin-top: 40px;
     font-weight: bold;
 }
 
 .search-Posts{
-font-size:70%;
-margin-top: -38px;
-margin-left: 60px;
+    font-size:70%;
+    margin-top: -38px;
+    margin-left: 60px;
 }
 
 .search-box-posts{

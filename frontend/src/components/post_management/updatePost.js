@@ -5,6 +5,7 @@ import { useParams} from "react-router-dom";
 import NavBar from "../Navbar";
 import Sidebar from "./Sidebar";
 import "../styles/post_css/update.css";
+import Button from 'react-bootstrap/Button';
 
 export default function Update() {
   //const navigate = useNavigate();
@@ -48,6 +49,7 @@ export default function Update() {
       <NavBar/>
       <div className="card-track">     
             <h3 className="post-title-sub-edit">POST</h3> 
+            <a href="/changes" class="previous">&laquo; <i class="bi bi-arrow-return-left"></i>Back</a>
             <h6 className="post-title-sub-edit-2">Update Posts</h6>
 
       <div className="dropdown" ></div>

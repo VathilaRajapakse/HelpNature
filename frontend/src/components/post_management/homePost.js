@@ -51,6 +51,9 @@ export default function Allprojects() {
           <h3 className="title-name" style={{ fontWeight: "bold" }} >
             POSTS
           </h3>
+          <h3 className="title-name" style={{ fontWeight: "Medium" }} >
+            What do you want to talk about?
+          </h3>
           {/* <div className="search-Posts">
               <input
                 onChange={searchPosts}

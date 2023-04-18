@@ -35,6 +35,11 @@
 	width: 350px;
     border-radius: 10px;
 }
+.previous {
+	background-color: #f1f1f1;
+	color: black;
+  }
+  
 .values1{
     height: 150px;
 	width: 350px;
