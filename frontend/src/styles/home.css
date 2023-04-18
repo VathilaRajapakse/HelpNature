@@ -8,7 +8,7 @@
   }
 
 .card-track {
-    width: 40%;
+    width: 50%;
     height: 100vh;
     background-color: rgb(255, 255, 255);
     margin: auto;
@@ -18,7 +18,7 @@
   }
 
 .blog-create{
-    margin-left:340px;
+    margin-left:460px;
     background-color: rgb(81, 170, 95);
     font-family: 'Times New Roman', Times, serif;
     font-size:small;
@@ -36,7 +36,7 @@
 .search-blogs{
 font-size:70%;
 margin-top: -38px;
-margin-left: 60px;
+margin-left: 180px;
 
 
 }

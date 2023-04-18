@@ -19,6 +19,25 @@ export default class CreateBlogs extends React.Component {
       
     };
   }
+
+  //handle and convert in in base 64
+  handleImage = (e) => {
+    const file = e.target.files[0];
+    this.setFilesToBase(file);
+    console.log(file);
+  }
+  
+  setFilesToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () =>{
+      this.setState({
+        image: reader.result
+      });
+    }
+  }
+
+
   handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -68,6 +87,9 @@ export default class CreateBlogs extends React.Component {
         }
       });
     };
+
+
+    
     render() {
         return (
           <div className="main-container">

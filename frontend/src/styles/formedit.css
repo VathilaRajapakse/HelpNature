@@ -8,7 +8,7 @@
     max-width: 97%;
     border-radius: 8px;
     padding: 55px 30px;
-    margin-right: 65px;
+    margin-right: 140px;
     margin-top: 20px;
    
   }
@@ -86,16 +86,16 @@
     width: 110px;
     height: 32px;
     margin-top: 20px;
-    margin-left: 72%;
+    margin-left: 80%;
     border-radius: 10px;
 }
 
 .blog-title-sub-edit{
-  margin-left: 58px;
+  margin-left: 128px;
   font-weight: bold;
 }
 .blog-title-sub-edit-2{
-  margin-left: 58px;
+  margin-left: 128px;
   text-decoration: underline;
 }
 

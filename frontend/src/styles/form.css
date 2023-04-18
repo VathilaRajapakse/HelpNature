@@ -1,4 +1,3 @@
-
 .blog-form{
     background: rgb(134, 199, 145);
     /* opacity: 70%; */
@@ -8,7 +7,7 @@
     max-width: 97%;
     border-radius: 8px;
     padding: 55px 30px;
-    margin-right: 65px;
+    margin-right: 150px;
     margin-top: 20px;
    
   }
@@ -73,7 +72,7 @@
     width: 110px;
     height: 32px;
     margin-top: 20px;
-    margin-left: 72%;
+    margin-left: 80%;
     border-radius: 10px;
 }
 
@@ -85,11 +84,11 @@
 }
 
 .blog-title-sub{
-  margin-left: 58px;
+  margin-left: 118px;
   font-weight: bold;
 }
 .blog-title-sub-2{
-  margin-left: 58px;
+  margin-left: 119px;
   text-decoration: underline;
 }
 

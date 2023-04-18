@@ -1,10 +1,12 @@
 const express = require('express');
 const Posts = require('../models/posts');
-
+const cloudinary = require('../utils/cloudinary')
 const router = express.Router();
 
 //Save blogs
 router.post('/post/save',(req,res) =>{
+
+  
     let newPost = new Posts(req.body);
     
     newPost.save((err) =>{
