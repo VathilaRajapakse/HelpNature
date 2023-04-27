@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser'); 
 const cors = require('cors');
+const images = require('./middleware/imageBlog')
 
 const app = express();
 
@@ -27,6 +28,10 @@ mongoose.connect(DB_URL,{
 const connection = mongoose.connection;
 connection.once("open",() =>{
     console.log("Mongodb connection success!")
+});
+
+app.use("/upload/blogPic/:nic", images.single("blogPic"), function (req, res) {
+res.json("Done");   
 });
 
 

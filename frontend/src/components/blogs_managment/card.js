@@ -1,86 +1,62 @@
 import React, { useState, useEffect } from "react";
-import "../../styles/card.css";
-import Image from "../../image/Wild.png";
 import axios from "axios";
 import LikeButton from "../blogs_managment/likebutton";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import "../../styles/card.css";
 
 function Card(props) {
+  // Use object destructuring to initialize state variables
   const [seeMore, setSeeMore] = useState(true);
-  const [blogs, setblogs] = useState([]);
-  const [userName, setUserName] = useState(localStorage.getItem("userName"));
+  const [blogs, setBlogs] = useState([]);
+  //const [userName, setUserName] = useState(localStorage.getItem("userName"));
 
   useEffect(() => {
-    function getblogs() {
-      axios
-        .get(`http://localhost:8080/posts/`)
-        .then((res) => {
-          console.log(res.data);
-          setblogs(res.data.existingPosts);
-        })
-        .catch((err) => {
-          alert(err.message);
-        });
+    // Move function inside useEffect to prevent it from being called on every render
+    async function getBlogs() {
+      try {
+        const response = await axios.get("http://localhost:8080/posts/");
+        setBlogs(response.data.existingPosts);
+      } catch (error) {
+        alert(error.message);
+      }
     }
-    getblogs();
-  }, []);
+    getBlogs(); // Call the function inside useEffect
+  }, []); // Add an empty dependency array to run this effect only once on mount
 
-  //refresh page
-  function refreshPage() {
-    window.location.reload(false);
-  }
-
-  //delete data
-  const deleteData = (e) => {
-    var result = window.confirm(
-      "Are You Sure, You want to delete this ?",
-      refreshPage()
-    );
-
-    if (result === true) {
-      axios
-        .delete(`http://localhost:8080/post/delete/${e._id}`)
-        .then((res) => {})
-        .catch((e) => {
-          alert(e);
-        });
-    } else {
-      e.preventDefault();
-    }
-  };
-
-  // async function likePost(postId) {
+  // Define the deleteData function
+  // const deleteData = async (e) => {
   //   try {
-  //     const response = await fetch(`/api/posts/${postId}/like`, {
-  //       method: 'PUT',
-  //       headers: { 'Content-Type': 'application/json' },
-  //     });
-  //     const data = await response.json();
-  //     console.log(data.message); // Post liked successfully!
-  //   } catch (err) {
-  //     console.error(err);
+  //     const confirmed = window.confirm("Are You Sure, You want to delete this ?");
+  //     if (confirmed) {
+  //       await axios.delete(`http://localhost:8080/post/delete/${e._id}`);
+  //       window.location.reload(false);
+  //     }
+  //   } catch (error) {
+  //     alert(error.message);
   //   }
-  // }
+  // };
 
   return (
     <div>
       <div className="blogger-container">
-  <AccountCircleIcon />
-  <p>{props.blogger_name}</p>
-</div>
+        <AccountCircleIcon />
+        <p>{props.blogger_name}</p>
+      </div>
 
       <div className="card-container">
+        {/* Use props to access data passed down from the parent component */}
         <div className="image-container">
-          <img src={Image} alt="image" className="image" />
+          <img width="100%" src={`http://localhost:8080/get/image/${props.topic}`} alt={props.blog_title} />
         </div>
         <div className="topic-container">
           <h4>{props.topic}</h4>
         </div>
         <div className="description-container">
-          <p className={seeMore && "description"}>{props.description}</p>
+          {/* Use ternary operator to conditionally apply the "description" class */}
+          <p className={seeMore ? "description" : ""}>{props.description}</p>
         </div>
         <div className="action-container">
-          {/* <label>Like</label> */}
+          {/* Render the LikeButton component */}
           <LikeButton />
           <button className="Read-more" onClick={() => setSeeMore(!seeMore)}>
             {seeMore ? "Read more" : "Less more"}

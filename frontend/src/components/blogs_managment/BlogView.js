@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from "./Blogs_navBar";
-import "../../styles/home.css";
-import "../../styles/navBar.css";
+// import "../../styles/home.css";
+// import "../../styles/navBar.css";
 import "../../styles/BlogView.css";
 import Image from "../../image/Wild.png";
 import Sidebar from "./Sidebar";
