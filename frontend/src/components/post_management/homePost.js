@@ -20,7 +20,7 @@ export default function Allprojects() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/post/")
+      .get("http://localhost:8080/posts/")
       .then((res) => {
         console.log(res.data);
         setPosts(res.data.existingPosts);

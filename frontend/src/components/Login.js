@@ -19,8 +19,8 @@ export default function MemberLogin() {
       .post("http://localhost:8080/register/login", member)
       .then(() => {
         window.localStorage.setItem("userName", userName);
-  window.location.reload()
-        
+  //window.location.reload()
+  window.location = `/home`; 
       })
       .catch((error) => {
         alert(error);
