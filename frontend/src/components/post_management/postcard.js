@@ -10,10 +10,7 @@ function procard(props) {
 
   return ( 
     
-      <div className="card-container">
-
-            
-            
+      <div className="card-container">           
 
             <div className="project-description-container">
               <p>{props.description}</p>

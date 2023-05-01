@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 
 //import routes
-const postRoutes = require('./routes/Post');
+const postRoutes = require('./routes/posts');
 const postRegister = require('./routes/register');
 //app middleware
 app.use(bodyParser.json());
