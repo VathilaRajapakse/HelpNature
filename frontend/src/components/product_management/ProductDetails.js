@@ -27,38 +27,40 @@ export default function Prescr() {
 },[])
 
  return (
-  <body className="main-body">
+  
     <div className="main-container">
     <NavBar/>
     <div>
+      
     <div className="card">
 
       
-      <form>   
+      <form>  
+        <div className='pdetailscard'>
             
             <div className='productnamecontainer'>
-            <label for="productname"><h5>Product Name</h5></label>  &nbsp;  
+            <label for="productname"><h5>Product Name</h5></label>  &nbsp;  <br></br>
             <input type="text" id="productname"  value={productname}  name="productname" readOnly onChange={(event)=>{
                 setpname(event.target.value);
             }} required/>
             </div><br/>
 
             <div className='productdescriptioncontainer'>
-            <label for="productdescription"><h5>Product Details</h5></label>  &nbsp;  
+            <label for="productdescription"><h5>Product Details</h5></label>  &nbsp;  <br></br>
             <input type="text" id="productdescription" value={productdescription} classname="productdescription" readOnly onChange={(event)=>{
                 setpd(event.target.value);
             }} required/>
             </div><br/>
 
             <div className='productpricecontainer'>
-            <label for="productprice"><h5>product price</h5></label>  &nbsp;  
+            <label for="productprice"><h5>product price</h5></label>  &nbsp;  <br></br>
             <input type="text" className="productprice" value={productprice} name="productprice" readOnly onChange={(event)=>{
                 setp(event.target.value);
             }} required/>
             </div><br/>
-  
+            </div> 
         </form>
-
+       
 
         <br/><hr/><br/>
       
@@ -70,6 +72,6 @@ export default function Prescr() {
          
     </div>
     
-  </body>
+  
 )
 }
