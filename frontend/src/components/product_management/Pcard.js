@@ -28,8 +28,8 @@ function Card(props) {
   }, []);
 
   return ( 
-    <div className="main-container">
-      <div className="card-container">
+    <div className="pcard-main-container">
+      <div className="pcard-container">
         <div className="image-container">
           <img src={Image} alt="image" className="image" />
         </div>
@@ -37,10 +37,10 @@ function Card(props) {
         <div className="pname">
           <h4>{props.productname}</h4>
         </div>
-
+{/* 
         <div className="product-des-container">
           <h4>{props.productdescription}</h4>
-        </div>
+        </div> */}
 
         <div className="product-price-container">
           <h4>{props.productprice}</h4>

@@ -135,16 +135,29 @@ export default function Pro() {
      return (
        <div className="main-container">
       <NavBar/>
+     <br>
+     </br>
+
+     
       <button className='addbtn'><a href='/add' style={{textDecoration:'none',color:'white'}}>Add New Products</a></button>
-        <br></br>&nbsp;&nbsp;
+
+<br></br>
+    
        <div className="card-track">
            
            {products.map((e, index) =>(
             <div>
               <Card productname={e.productname} productdescription={e.productdescription}  productprice={e.productprice} id={e.id}/> 
+              
+              
+              
               <a className='btn btn-warning' href={`/edit/${e._id}`}>
-//                                             <i className='fas fa-edit'></i>&nbsp;EDIT
-//                                           </a>
+                   <i className='fas fa-edit'></i>EDIT
+              </a>
+              &nbsp;&nbsp;
+              <a className='btn btn-warning' >
+                  <i className='fas fa-edit'></i>DELETE
+              </a>
 </div>
            ))}
                   
