@@ -1,6 +1,8 @@
 const express = require('express');
 const Project = require('../models/Project');
 const router = express.Router();
+const path = require("path");
+const fs =require("fs")
 
 
 router.post('/project/save',(req,res)=> {
@@ -86,5 +88,39 @@ router.delete('/project/delete/:id',(req,res) =>{
         });
     });
 });
+
+
+
+
+//image
+router.get("/get/image/:id", (req, res) => {
+    let imageId = req.params.id;
+  
+    const Path = path.resolve(
+      __dirname,
+      `../photoSave/${imageId}.png`
+    );
+    const Path2 = path.resolve(
+      __dirname,
+      `../photoSave/${imageId}.jpg`
+    );
+    
+  
+    fs.readFile(Path, function (err, data) {
+      if (err) {
+        fs.readFile(Path2, function (err, data) {
+          if (err) {
+            res.sendStatus(404).send("File not found")
+          } else {
+            res.writeHead(200, { ContentType: "image/jpg" });
+            res.end(data);
+          }
+        });
+      } else {
+        res.writeHead(200, { ContentType: "image/png" });
+        res.end(data);
+      }
+    });
+  });
 
 module.exports = router;

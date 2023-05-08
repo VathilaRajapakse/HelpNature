@@ -20,15 +20,13 @@ export default function App() {
              
        
 
-              <Route path="/" element={<Login/>}></Route>
+              <Route path="/Login" element={<Login/>}></Route>
               <Route path="/Volunter" element={<Volunter/>}></Route>            
               <Route path="/All" element={<Allproject/>}></Route>
-              <Route path="/Add" element={<Addproject/>}></Route>
+              <Route path="/" element={<Addproject/>}></Route>
               <Route path="/vform" element={<VForm/>}></Route>
               <Route path="/Register" element={<Register/>}></Route>
-             
-            
-          
+     
            </Routes>     
       </BrowserRouter>
 

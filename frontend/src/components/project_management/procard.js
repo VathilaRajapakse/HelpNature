@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 //import "../../styles/card.css";
-import Image from "../../image/sr.jpg";
+//import Image from "../../image/sr.jpg";
 import "../styles/project_css/procard.css";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddLocationIcon from '@mui/icons-material/AddLocation';
@@ -11,8 +11,12 @@ function procard(props) {
     
       <div className="card-container">
        
-        <div className="image-container">
-          <img src={Image} alt="image" className="image" />
+       <div className="image-container">
+          <img width="100%" src={`http://localhost:8080/get/image/${props.topic}`} alt={props.projectName} />
+        </div>
+
+        <div className="project-name-container">
+          <h1>{props.topic}</h1>
         </div>
         <div className="project-name-container">
           <h1>{props.projectName}</h1>

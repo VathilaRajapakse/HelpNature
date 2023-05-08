@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser'); 
 const cors = require('cors');
+const images = require('./middleware/imagepro');
 
 const app = express();
 
@@ -32,8 +33,13 @@ connection.once("open",() =>{
     console.log("Mongodb connection success!")
 });
 
+app.use("/upload/project/:nic", images.single("project"), function (req, res) {
+    res.json("Done");   
+    });
+
 
 app.listen(PORT, () =>{
     console.log(`App is running on ${PORT}`);
 });
+
 

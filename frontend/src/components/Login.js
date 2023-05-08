@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-//import "../styles/login.css";
+import "./styles/login.css";
 
 export default function MemberLogin() {
-  const history = useNavigate();
-
   const [userName, setUserName] = useState("");
 
   const [password, setPassword] = useState("");
@@ -22,8 +19,8 @@ export default function MemberLogin() {
       .post("http://localhost:8080/register/login", member)
       .then(() => {
         window.localStorage.setItem("userName", userName);
-
-        history("/Volunter");
+  window.location.reload()
+        
       })
       .catch((error) => {
         alert(error);
@@ -96,14 +93,16 @@ export default function MemberLogin() {
                       </label>
                     </div>
                     <div>
-                      <a href="#" class="txt1">
-                        Forgot Password?
+                      <a href="/registration" class="txt1">
+                        Don't have an Account ?
                       </a>
                     </div>
                   </div>
                   <div class="container-login100-form-btn p-t-25">
                     {" "}
-                    <button class="login100-form-btn"> Login </button>{" "}
+                   <a href="/Volunter">
+                    <button class="login100-form-btn" > Login </button>{" "}
+                    </a>
                   </div>
                 </form>
               </div>

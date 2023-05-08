@@ -11,10 +11,11 @@ import "../styles/project_css/addproject.css";
 
 export default function Allprojects() {
    const [projectName, setproname] = useState([]);
-   const [photo, setphoto] = useState([]);
+   //const [photo, setphoto] = useState([]);
    const [time, settime] = useState([]);
    const [location, setlocation] = useState([]);
    const [description, setdescription] = useState([]);
+   const [fileUpload, setFileUpload] = useState();
 
  
 
@@ -33,27 +34,43 @@ export default function Allprojects() {
     //Creating object
     const newproject ={
         projectName,
-        photo,
+        
         time,
         location,
         description
        
     }
-    
-    //passing data to the DB
+
+    const imageSave = new FormData();
+    imageSave.append("project", fileUpload);
+
     axios.post("http://localhost:8080/project/save", newproject).then(()=>{
+      axios
+        .post(`http://localhost:8080/upload/project/${projectName}`, imageSave)
+        .then((res) => {
+          alert("project successfully added");
+        });
+    });
 
-      alert("project  is successful",refreshPage());
-      console.log(newproject);
+    
+    // //passing data to the DB
+    // axios.post("http://localhost:8080/project/save", newproject).then(()=>{
+      
 
-    }).catch((err)=>{
+    //   alert("project  is successful",refreshPage());
+    //   console.log(newproject);
 
-      alert("Error: project not added");
-      console.log(err);
+    // }).catch((err)=>{
 
-    })
+    //   alert("Error: project not added");
+    //   console.log(err);
+
+    // })
 
   }
+
+
+
 
        
     
@@ -75,13 +92,21 @@ export default function Allprojects() {
               </div><br/>
 
               
-              <div className='photo-container'>
+              {/* <div className='photo-container'>
               <label for="photo"><b>Choose Images</b></label>  &nbsp;  
               <input type="file" accept=".png, .jpg, .jpeg" id="photo"   name="photo"  onChange={(event)=>{
                   setphoto(event.target.value);
               }} />
-              </div><br/>
+              </div><br/> */}
 
+<input
+                  className="chooseFile"
+                  type="file"
+                  name="Choose file"
+                  onChange={(e) => {
+                    setFileUpload(e.target.files[0]);
+                  }}
+                />
               
               <div className='time-container'>
               <label for="time"><b>start & End Time:</b></label> <br/>
