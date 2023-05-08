@@ -79,28 +79,25 @@ export default function AllProjects() {
       <div className="card-track">
         <h3 className="title-name">BLOGS</h3>
         {blogs.map((blog, index) => (
-          <div key={index}>
-            <div className="cardbody">
-              <figure>
-                <img
-                  src={Image}
-                  width={"250px"}
-                  height={"300px"}
-                  alt="Mountains"
-                />
-                <figcaption>
-                  <Link to={"/edit/" + blog._id}>
-                    <EditIcon sx={{marginTop:-10 ,marginLeft:5, fontSize: 40, color: lightBlue[50] }} />
-                  </Link>
-                  <DeleteIcon
-                    onClick={() => confirmDeletebox(blog._id)}
-                    sx={{marginBottom:5.5,marginLeft:7, fontSize: 40, color: lightBlue[50] }}
-                  />
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        ))}
+  <div key={index}>
+    <div className="cardbody">
+      <figure>
+      <div className="image-container">
+          <img width="100%" src={`http://localhost:8080/get/image/${props.topic}`} alt={props.blog_title} />
+        </div>
+        <figcaption>
+          <Link to={"/edit/" + blog._id}>
+            <EditIcon sx={{ marginTop: -10, marginLeft: 5, fontSize: 40, color: lightBlue[50] }} />
+          </Link>
+          <DeleteIcon
+            onClick={() => confirmDeletebox(blog._id)}
+            sx={{ marginBottom: 5.5, marginLeft: 7, fontSize: 40, color: lightBlue[50] }}
+          />
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+))}
       </div>
       <Dialog open={deleteBlog} onClose={() => setDeleteBlog(false)}>
         <DialogTitle>Warning!</DialogTitle>

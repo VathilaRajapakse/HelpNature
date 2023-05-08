@@ -10,18 +10,18 @@ function Card(props) {
   const [blogs, setBlogs] = useState([]);
   //const [userName, setUserName] = useState(localStorage.getItem("userName"));
 
-  useEffect(() => {
-    // Move function inside useEffect to prevent it from being called on every render
-    async function getBlogs() {
-      try {
-        const response = await axios.get("http://localhost:8080/posts/");
-        setBlogs(response.data.existingPosts);
-      } catch (error) {
-        alert(error.message);
-      }
-    }
-    getBlogs(); // Call the function inside useEffect
-  }, []); // Add an empty dependency array to run this effect only once on mount
+  // useEffect(() => {
+  //   // Move function inside useEffect to prevent it from being called on every render
+  //   async function getBlogs() {
+  //     try {
+  //       const response = await axios.get("http://localhost:8080/posts/");
+  //       setBlogs(response.data.existingPosts);
+  //     } catch (error) {
+  //       alert(error.message);
+  //     }
+  //   }
+  //   getBlogs(); // Call the function inside useEffect
+  // }, []); // Add an empty dependency array to run this effect only once on mount
 
   // Define the deleteData function
   // const deleteData = async (e) => {
