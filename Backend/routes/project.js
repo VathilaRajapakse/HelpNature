@@ -92,7 +92,41 @@ router.delete('/project/delete/:id',(req,res) =>{
 
 
 
-//image
+// //image
+// router.get("/get/image/:id", (req, res) => {
+//     let imageId = req.params.id;
+  
+//     const Path = path.resolve(
+//       __dirname,
+//       `../photoSave/${imageId}.png`
+//     );
+//     const Path2 = path.resolve(
+//       __dirname,
+//       `../photoSave/${imageId}.jpg`
+//     );
+    
+  
+//     fs.readFile(Path, function (err, data) {
+//       if (err) {
+//         fs.readFile(Path2, function (err, data) {
+//           if (err) {
+//             res.sendStatus(404).send("File not found")
+            
+//           } else {
+//             res.writeHead(200, { ContentType: "image/jpg" });
+//             res.end(data);
+          
+//           }
+//         });
+//       } else {
+//         res.writeHead(200, { ContentType: "image/png" });
+//         res.end(data);
+        
+//       }
+//     });
+//   });
+
+
 router.get("/get/image/:id", (req, res) => {
     let imageId = req.params.id;
   
@@ -115,11 +149,13 @@ router.get("/get/image/:id", (req, res) => {
             res.writeHead(200, { ContentType: "image/jpg" });
             res.end(data);
           }
+          
         });
       } else {
         res.writeHead(200, { ContentType: "image/png" });
         res.end(data);
       }
+      
     });
   });
 

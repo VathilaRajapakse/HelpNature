@@ -12,12 +12,10 @@ function procard(props) {
       <div className="card-container">
        
        <div className="image-container">
-          <img width="100%" src={`http://localhost:8080/get/image/${props.topic}`} alt={props.projectName} />
+          <img width="100%" src={`http://localhost:8080/get/image/${props.projectName}`} alt={props.projectName} />
         </div>
 
-        <div className="project-name-container">
-          <h1>{props.topic}</h1>
-        </div>
+        
         <div className="project-name-container">
           <h1>{props.projectName}</h1>
         </div>
