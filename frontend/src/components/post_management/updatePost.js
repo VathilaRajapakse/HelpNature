@@ -13,14 +13,14 @@ export default function Update() {
   const { id } = useParams();
   
   const [description, setdes] = useState();
-  const [photo, setphto] = useState();
+ 
   
   useEffect(() => {
     axios.get(`http://localhost:8080/post/`+ id).then(
-      (getData, res) => {
+      (res) => {
         
-        setdes(getData.data.posts.description);
-        setphto(getData.data.posts.photo);
+        setdes(res.data.description);
+       
     
         
       }
@@ -32,7 +32,7 @@ export default function Update() {
     const data = {
     
       description,  
-      photo   
+      
     };
     axios.put(`http://localhost:8080/post/update/${id}`, data)
       .then((res) => {

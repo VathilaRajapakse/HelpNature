@@ -14,9 +14,9 @@ export default function Allprojects() {
   // const [serQuary, setSerQuary] = useState("");
   // const [filteredBlogs, setFilteredBlogs] = useState([]);
 
-  function refreshPage(){
-    window.location.reload(false);
-  }
+  // function refreshPage(){
+  //   window.location.reload(false);
+  // }
 
   useEffect(() => {
     axios

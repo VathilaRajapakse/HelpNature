@@ -81,7 +81,7 @@ export default function NavBar() {
             </div>
            
             <div className="nav_body">
-                <NavLink to="/details" className="link_styles">
+                <NavLink to="/" className="link_styles">
                     <div className="nav_link_wrapper">
                         <ArticleIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} /><br/>
                         <p className="nav_link clearfix"><b>BLOGS</b></p>

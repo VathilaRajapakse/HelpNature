@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
-    post_name:{
+    username:{
         type:String,
         required:true
     },
@@ -15,10 +15,7 @@ const postSchema = new mongoose.Schema({
         required: true
     },
 
-    photo:{
-        data: Buffer,
-        contentType: String,
-    }
+   
 
 });
 

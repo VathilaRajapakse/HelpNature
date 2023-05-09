@@ -85,46 +85,76 @@ router.delete('/post/delete/:id',(req,res) =>{
 })
 
 
-// Update image
-router.put('/image/update/:id', (req, res) => {
-    let imageId = req.params.id;
+// // Update image
+// router.put('/image/update/:id', (req, res) => {
+//     let imageId = req.params.id;
   
-    Images.findByIdAndUpdate(imageId, {
-      $set: req.body
-    }, (err, image) => {
-      if (err) {
-        return res.status(400).json({
-          success: false,
-          error: err
-        });
-      }
+//     Images.findByIdAndUpdate(imageId, {
+//       $set: req.body
+//     }, (err, image) => {
+//       if (err) {
+//         return res.status(400).json({
+//           success: false,
+//           error: err
+//         });
+//       }
   
-      return res.status(200).json({
-        success: true,
-        message: 'Image updated successfully'
+//       return res.status(200).json({
+//         success: true,
+//         message: 'Image updated successfully'
+//       });
+//     });
+//   });
+  
+//   // Delete image
+//   router.delete('/image/delete/:id', (req, res) => {
+//     let imageId = req.params.id;
+  
+//     Images.findByIdAndRemove(imageId, (err, image) => {
+//       if (err) {
+//         return res.status(400).json({
+//           success: false,
+//           error: err
+//         });
+//       }
+  
+//       return res.status(200).json({
+//         success: true,
+//         message: 'Image deleted successfully'
+//       });
+//     });
+//   });
+  
+//image
+router.get("/get/image/:id", (req, res) => {
+  let imageId = req.params.id;
+
+  const Path = path.resolve(
+    __dirname,
+    `../photoSave/${imageId}.png`
+  );
+  const Path2 = path.resolve(
+    __dirname,
+    `../photoSave/${imageId}.jpg`
+  );
+  
+
+  fs.readFile(Path, function (err, data) {
+    if (err) {
+      fs.readFile(Path2, function (err, data) {
+        if (err) {
+          res.sendStatus(404).send("File not found")
+        } else {
+          res.writeHead(200, { ContentType: "image/jpg" });
+          res.end(data);
+        }
       });
-    });
+    } else {
+      res.writeHead(200, { ContentType: "image/png" });
+      res.end(data);
+    }
   });
-  
-  // Delete image
-  router.delete('/image/delete/:id', (req, res) => {
-    let imageId = req.params.id;
-  
-    Images.findByIdAndRemove(imageId, (err, image) => {
-      if (err) {
-        return res.status(400).json({
-          success: false,
-          error: err
-        });
-      }
-  
-      return res.status(200).json({
-        success: true,
-        message: 'Image deleted successfully'
-      });
-    });
-  });
-  
+});
 
 
 module.exports = router;
