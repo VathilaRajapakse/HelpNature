@@ -71,7 +71,7 @@ export default function NavBar() {
             </div>
 
             <div className="nav_body">
-                <NavLink to="/" className="link_styles">
+                <NavLink to="/All" className="link_styles">
                     <div className="nav_link_wrapper">
                         <EditIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} /><br/>
                         <p className="nav_link clearfix"><b>PROJECTS</b></p>

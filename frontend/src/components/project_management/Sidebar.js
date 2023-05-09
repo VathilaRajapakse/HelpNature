@@ -1,24 +1,27 @@
-import React from 'react';
+
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import "../styles/project_css/navBar.css";
 
 
 
-export default function Sidebar() {
+export default function AllproSidebar() {
+   
 
-
-    
 
     return <div className="nav_main_container">
-
+        </div>
       
-           
-           
-                
+
+     
+    
+   
+        
 
 
             
         
         
-        </div>
+    
 
 }

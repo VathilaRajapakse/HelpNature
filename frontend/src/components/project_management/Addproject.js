@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NavBar from "./ProjectNavBar";
-import Sidebar from "./Sidebar";
+import AllprojectSidebar from "./AllProSidebar";
 import { useParams} from "react-router-dom";
 import "../styles/project_css/navBar.css";
 import "../styles/project_css/common.css";
 import "../styles/project_css/header.css";
 import "../styles/project_css/retriveTable.css";
 import "../styles/project_css/addproject.css";
+
+
 
 export default function Allprojects() {
    const [projectName, setproname] = useState([]);
@@ -16,6 +18,14 @@ export default function Allprojects() {
    const [location, setlocation] = useState([]);
    const [description, setdescription] = useState([]);
    const [fileUpload, setFileUpload] = useState();
+
+
+
+
+
+
+
+
 
  
 
@@ -134,9 +144,10 @@ export default function Allprojects() {
         </div>
         
 
-        <Sidebar />
-    </div>
-    
+        <AllprojectSidebar />
 
+
+        {/* update and delete */}
+</div>
     );
 }
