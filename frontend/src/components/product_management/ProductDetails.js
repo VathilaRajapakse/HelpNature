@@ -35,7 +35,7 @@ export default function Prescr() {
     <div className="card">
 
       
-      <form>  
+      
         <div className='pdetailscard'>
             
             <div className='productnamecontainer'>
@@ -59,14 +59,14 @@ export default function Prescr() {
             }} required/>
             </div><br/>
             </div> 
-        </form>
+     
        
 
         <br/><hr/><br/>
       
         </div>
         <button className='backbtn'><a href='/' style={{textDecoration:'none',color:'white'}}>BACK</a></button>
-        <button className='buybtn'><a href='/add' style={{textDecoration:'none',color:'white'}}>BUY NOW</a></button>
+        <button className='buybtn'><a href='/payments' style={{textDecoration:'none',color:'white'}}>BUY NOW</a></button>
         </div>
          <Sidebar/>
          

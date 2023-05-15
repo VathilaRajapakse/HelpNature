@@ -46,7 +46,7 @@ export default function Allprojects() {
 
 
       return (
-        <div className="main-container">
+        <div className="products-main-container">
       <NavBar />
 
       <div className="card-track">
@@ -54,9 +54,15 @@ export default function Allprojects() {
           <div key={index}>
             <Card productname={e.productname} productprice={e.productprice} />
             <a href={`/det/${e._id}`}>
+
+           
               <button type="button" className="btn1">
                 VIEW
               </button>
+   
+
+
+
             </a>
           </div>
         ))}
