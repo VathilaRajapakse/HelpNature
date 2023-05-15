@@ -3,6 +3,8 @@
     text-align: center;
     width: 600px;
     margin-left: 130px;
+    margin: auto;
+
 }
 
 h5{
@@ -43,15 +45,3 @@ h5{
 
 
 
-
-/* .main-body{
-    width: 100%;
-    display: flex;
-} 
-.card-track{
-    width: 100%;
-    flex-direction: row;
-}
- .clearfix {
-    margin: 0;
-} */
