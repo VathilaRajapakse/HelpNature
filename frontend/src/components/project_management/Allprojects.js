@@ -55,7 +55,7 @@ export default function Allprojects() {
         <div className="card-track">
             
             {project.map((e, index) =>(
-               <Procard projectName={e.projectName} description={e.description}  time={e.time}  location={e.location} /> 
+               <Procard projectName={e.projectName} description={e.description} date={e.date.split('T')[0]} time={e.time}  location={e.location} /> 
             ))}
            
         </div>

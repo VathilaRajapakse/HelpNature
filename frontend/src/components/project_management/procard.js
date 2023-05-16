@@ -28,6 +28,15 @@ function procard(props) {
         {/* <div className="project-photo-container">
           <h4>{props.photo}</h4>
         </div> */}
+
+<div className="project-time-container">
+        <div className="proicon1">
+        <AccessTimeIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} />
+          <p>{props.date}</p>
+          </div>
+        </div>
+       
+
         <div className="project-time-container">
         <div className="proicon1">
         <AccessTimeIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} />

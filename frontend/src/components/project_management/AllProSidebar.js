@@ -31,6 +31,13 @@ export default function AllproSidebar() {
    useEffect(() => {
     axios
       .get(`http://localhost:8080/project/`)
+
+
+
+
+
+
+      
       .then((res) => {
         console.log(res.data);
         setpoject(res.data.existingProject);
@@ -73,10 +80,10 @@ export default function AllproSidebar() {
 
      
      <div className="card-track">
-       <h3 className="title-name">Project</h3>
+       <h3 className="tname">Project</h3>
        {project.map((a, index) => (
          <div key={index}>
-           <div className="cardbody">
+           <div className="sidecard">
              <figure>
                <img
                  src={Ima}
@@ -85,7 +92,7 @@ export default function AllproSidebar() {
                  alt="Mountains"
                />
                <figcaption>
-                 <Link to={"/update/" + a._id}>
+                 <Link to={"/PUpdate/" + a._id}>
                    <EditIcon sx={{marginTop:-10 ,marginLeft:5, fontSize: 40, color: lightBlue[50] }} />
                  </Link>
                  <DeleteIcon

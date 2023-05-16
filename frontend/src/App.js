@@ -9,6 +9,7 @@ import Addproject from './components/project_management/Addproject';
 import VForm from './components/project_management/VForm';
 import Register from './components/registration';
 import Login from './components/Login';
+import PUpdate from './components/project_management/updatepro'
 
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
               <Route path="/" element={<Addproject/>}></Route>
               <Route path="/vform" element={<VForm/>}></Route>
               <Route path="/Register" element={<Register/>}></Route>
+              <Route path="/PUpdate/:id" element={<PUpdate/>}></Route>
      
            </Routes>     
       </BrowserRouter>

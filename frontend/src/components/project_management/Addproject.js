@@ -14,20 +14,12 @@ import "../styles/project_css/addproject.css";
 export default function Allprojects() {
    const [projectName, setproname] = useState([]);
    //const [photo, setphoto] = useState([]);
+   const [date, setDate] = useState([]);
    const [time, settime] = useState([]);
    const [location, setlocation] = useState([]);
    const [description, setdescription] = useState([]);
    const [fileUpload, setFileUpload] = useState();
 
-
-
-
-
-
-
-
-
- 
 
   //page refresh function
 
@@ -44,7 +36,7 @@ export default function Allprojects() {
     //Creating object
     const newproject ={
         projectName,
-        
+        date,
         time,
         location,
         description
@@ -109,7 +101,7 @@ export default function Allprojects() {
               }} />
               </div><br/> */}
 
-<input
+                <input
                   className="chooseFile"
                   type="file"
                   name="Choose file"
@@ -117,10 +109,17 @@ export default function Allprojects() {
                     setFileUpload(e.target.files[0]);
                   }}
                 />
+                <br/><br/>
+                <div className="date-container">
+              <label for="date"><b>Date:</b></label><br/>
+              <input type="Date" id="date" className="values2"  name="date"  onChange={(event)=>{
+                setDate(event.target.value);
+              }} required/><br/><br/>
+            </div>
               
               <div className='time-container'>
               <label for="time"><b>start & End Time:</b></label> <br/>
-              <input type="text" id="time" className="values"    name="time"  onChange={(event)=>{
+              <input type="time" id="time" className="values2"    name="time"  onChange={(event)=>{
                   settime(event.target.value);
               }} required/>
               </div><br/>
