@@ -4,14 +4,17 @@ import React, { useState } from "react";
 import "../styles/project_css/procard.css";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddLocationIcon from '@mui/icons-material/AddLocation';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import Like from "../project_management/ProLike"
+
 
 function procard(props) {
    // const [seeMore,setSeeMore]= useState(true)
   return ( 
     
-      <div className="card-container">
+      <div className="procard-container">
        
-       <div className="image-container">
+       <div className="proimage-container">
           <img width="100%" src={`http://localhost:8080/get/image/${props.projectName}`} alt={props.projectName} />
         </div>
 
@@ -31,7 +34,7 @@ function procard(props) {
 
 <div className="project-time-container">
         <div className="proicon1">
-        <AccessTimeIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} />
+        <DateRangeIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} />
           <p>{props.date}</p>
           </div>
         </div>
@@ -40,7 +43,14 @@ function procard(props) {
         <div className="project-time-container">
         <div className="proicon1">
         <AccessTimeIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} />
-          <p>{props.time}</p>
+          <p>{props.stime}</p>
+          </div>
+        </div>
+
+        <div className="project-time-container">
+        <div className="proicon1">
+        <AccessTimeIcon fontSize="small" className='iconcolor' style={{ marginLeft: "45px" }} />
+          <p>{props.etime}</p>
           </div>
         </div>
 
@@ -55,7 +65,7 @@ function procard(props) {
         
        
         <div className="like-container">
-          <label>Like</label>
+          <Like />
           <a href="/vform">
           <button className="jbutton">JOIN</button>
           </a>

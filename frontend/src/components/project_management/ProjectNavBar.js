@@ -52,6 +52,7 @@ export default function NavBar() {
           <option className="dropdown-fonts">Blogs</option>
           <option className="dropdown-fonts">Products</option>
           <option className="dropdown-fonts">Projects</option>
+      
           {userName && (
             <option className="dropdown-fonts" value="Logout">
               Logout

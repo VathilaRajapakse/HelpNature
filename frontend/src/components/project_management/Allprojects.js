@@ -10,10 +10,14 @@ import "../styles/project_css/navBar.css";
 //import "../styles/anushka_css/stylePrescription.css"
 import Procard from "./procard"
 import "../styles/project_css/allproject.css"
+import SearchIcon from '@mui/icons-material/Search';
 
 
 export default function Allprojects() {
    const [project, setproject] = useState([]);
+   const [blogs, setBlogs] = useState([]);
+   const [serQuary, setSerQuary] = useState("");
+   const [filteredBlogs, setFilteredBlogs] = useState([]);
 
     const {id} = useParams();
 
@@ -37,7 +41,18 @@ export default function Allprojects() {
         window.location.reload(false);
       }
 
+      useEffect(() => {
+        setFilteredBlogs(
+          project.filter(
+            (project) =>
+            project.projectName.toLowerCase().includes(serQuary.toLowerCase())          
+          )
+        );
+      }, [project, serQuary]);
 
+      function searchBlogs(event) {
+        setSerQuary(event.target.value);
+      }
     
       
         
@@ -53,9 +68,18 @@ export default function Allprojects() {
         </div>
        
         <div className="card-track">
+
+        <div className="search-blogs">
+              <input
+                onChange={searchBlogs}
+                type="search"
+                placeholder="Search"
+                className="search-box-blogs"
+              />
+          </div>
             
-            {project.map((e, index) =>(
-               <Procard projectName={e.projectName} description={e.description} date={e.date.split('T')[0]} time={e.time}  location={e.location} /> 
+            {filteredBlogs.map((e, index) =>(
+               <Procard projectName={e.projectName} description={e.description} date={e.date.split('T')[0]} stime={e.stime} etime={e.etime}  location={e.location} /> 
             ))}
            
         </div>

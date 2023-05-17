@@ -11,7 +11,12 @@ const postProject = new mongoose.Schema({
         required:true
     },
   
-    time:{
+    stime:{
+        type:String,
+        required:true
+    },
+
+    etime:{
         type:String,
         required:true
     },

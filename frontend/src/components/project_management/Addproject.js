@@ -15,7 +15,8 @@ export default function Allprojects() {
    const [projectName, setproname] = useState([]);
    //const [photo, setphoto] = useState([]);
    const [date, setDate] = useState([]);
-   const [time, settime] = useState([]);
+   const [stime, setstime] = useState([]);
+   const [etime, setetime] = useState([]);
    const [location, setlocation] = useState([]);
    const [description, setdescription] = useState([]);
    const [fileUpload, setFileUpload] = useState();
@@ -37,7 +38,8 @@ export default function Allprojects() {
     const newproject ={
         projectName,
         date,
-        time,
+        stime,
+        etime,
         location,
         description
        
@@ -118,9 +120,16 @@ export default function Allprojects() {
             </div>
               
               <div className='time-container'>
-              <label for="time"><b>start & End Time:</b></label> <br/>
+              <label for="stime"><b>start Time:</b></label> <br/>
               <input type="time" id="time" className="values2"    name="time"  onChange={(event)=>{
-                  settime(event.target.value);
+                  setstime(event.target.value);
+              }} required/>
+              </div><br/>
+
+              <div className='time-container'>
+              <label for="etime"><b>End Time:</b></label> <br/>
+              <input type="time" id="time" className="values2"    name="time"  onChange={(event)=>{
+                  setetime(event.target.value);
               }} required/>
               </div><br/>
 
