@@ -30,7 +30,7 @@ connection.once("open",() =>{
     console.log("Mongodb connection success!")
 });
 
-app.use("/upload/postPic/:nic", images.single("postPic"), function (req, res) {
+app.use("/upload/post/:nic", images.single("post"), function (req, res) {
     res.json("Done");   
     });
 

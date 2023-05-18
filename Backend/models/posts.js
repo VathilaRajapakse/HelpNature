@@ -14,11 +14,11 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    yesCount: { type: Number, default: 0 },
+    noCount: { type: Number, default: 0 },
 
    
 
 });
-
-
 
 module.exports = mongoose.model('post',postSchema);

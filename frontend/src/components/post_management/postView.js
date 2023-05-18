@@ -11,7 +11,8 @@ import Sidebar from "./Sidebar";
 import { lightBlue } from "@mui/material/colors";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Link } from "react-router-dom";
+import { Link ,useParams} from "react-router-dom";
+
 import {
   Button,
   Dialog,
@@ -26,6 +27,7 @@ export default function AllProjects() {
   const [deletePost, setDeletePost] = useState(false);
   const [postToDelete, setpostToDelete] = useState(null);
   const [postid, setpostid] = useState("");
+  const { id } = useParams();
 
   useEffect(() => {
     axios
@@ -74,13 +76,14 @@ export default function AllProjects() {
   //   }
   // };
   return (
+    <div className="nav_main_container">
     <div className="main1-container">
-      <NavBar />
-      <div className="card-track">
-        <h3 className="title-name">POSTS</h3>
+     
+      <div className="postcard-track">
+        <h3 className="posttitle-name">POSTS</h3>
         {posts.map((post, index) => (
           <div key={index}>
-            <div className="cardbody">
+            <div className="postcardbody">
               <figure>
                 <img
                   src={Image}
@@ -88,6 +91,7 @@ export default function AllProjects() {
                   height={"300px"}
                   alt="Mountains"
                 />
+                 {/* <img width="100%" src={`http://localhost:8080/${post.post}`} alt={id} /> */}
                 <figcaption>
                   <Link to={"/update/" + post._id}>
                     <EditIcon sx={{marginTop:-10 ,marginLeft:5, fontSize: 40, color: lightBlue[50] }} />
@@ -118,7 +122,8 @@ export default function AllProjects() {
           </Box>
         </DialogActions>
       </Dialog>
-      <Sidebar />
+    
+    </div>
     </div>
   );
 }

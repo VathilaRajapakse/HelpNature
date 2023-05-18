@@ -20,7 +20,7 @@ export default function MemberLogin() {
       .then(() => {
         window.localStorage.setItem("userName", userName);
   //window.location.reload()
-  window.location = `/home`; 
+  window.location = `/All`; 
       })
       .catch((error) => {
         alert(error);

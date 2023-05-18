@@ -6,6 +6,7 @@ import NavBar from "../Navbar";
 import Sidebar from "./Sidebar";
 import "../styles/post_css/update.css";
 import Button from 'react-bootstrap/Button';
+import Postsidebar from "./postView";
 
 export default function Update() {
   //const navigate = useNavigate();
@@ -13,13 +14,14 @@ export default function Update() {
   const { id } = useParams();
   
   const [description, setdes] = useState();
+  const [fileUpload, setFileUpload] = useState();
  
   
   useEffect(() => {
     axios.get(`http://localhost:8080/post/`+ id).then(
       (res) => {
-        
-        setdes(res.data.description);
+        const post = res.data.post;
+        setdes(res.data.post.description);
        
     
         
@@ -42,46 +44,64 @@ export default function Update() {
       .catch((err) => {
         alert("Update Unsuccessful");
       });
+      if (fileUpload) {
+        const imageSave = new FormData();
+        imageSave.append("post", fileUpload);
+  
+        {
+          axios
+            .post(`http://localhost:8080/upload/post/${description}`, imageSave)
+            .then(() => {});
+        }
+      }
   };
 
   return (
     <div className="main-container">    
       <NavBar/>
       <div className="card-track">     
-            <h3 className="post-title-sub-edit">POST</h3> 
-            <a href="/changes" class="previous">&laquo; <i class="bi bi-arrow-return-left"></i>Back</a>
-            <h6 className="post-title-sub-edit-2">Update Posts</h6>
+            <h3 className="post_title_sub_update">POST</h3> 
+            <a href="/home" class="previous">&laquo; <i class="bi bi-arrow-return-left"></i>Back</a>
+            <h6 className="post-title-sub-update-2">Update Posts</h6>
 
       <div className="dropdown" ></div>
       
-      <form className="post-edit-form">              
+      <form className="post_update_form">              
         
           
           
-          <div className="post-edit-item">
-            <label className="post-edit-label" for="description">
+          <div className="post_update_item">
+            <label className="post_update_label" for="postdescription">
               Description
             </label>
-            <textarea className="post-edit-half-item"
+            <textarea className="post_update_half_item"
                   type="text"
-                  id="description2"
-                  name="description2"
+                  id="postdescription"
+                  name="postdescription"
                   value={description}
                   onChange={(e) => setdes(e.target.value)}
                 
                 />
+                 <input
+              className="chooseFile"
+              type="file"
+              name="Choose file"
+              onChange={(e) => {
+                setFileUpload(e.target.files[0]);
+              }}
+            />
           </div>
                    
           <button
               type="submit"
-              className="post-edit-btn"              
+              className="post_update_btn"              
               onClick={sendDataToAPI}
             >
               Update
             </button>
       </form>
       </div>
-      <Sidebar/>
+      <Postsidebar/>
     </div>
     
   );

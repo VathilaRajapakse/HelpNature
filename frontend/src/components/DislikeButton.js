@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./styles/likebutton.css"
 
 
-function LikeButton() {
+function DislikeButton() {
    const [likes, setLikes] = useState(0);
    const [liked, setLiked] = useState(false);
    
@@ -15,9 +15,9 @@ function LikeButton() {
                setLiked(true);
             }}
          >
-            {likes} Yes
+            {likes} No
          </button>
       </div>
    );
 }
-export default LikeButton;
+export default DislikeButton;

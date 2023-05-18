@@ -6,7 +6,9 @@ import { useParams} from "react-router-dom";
 import "../styles/navBar.css";
 import "../styles/common.css";
 import "../styles/header.css";
-import "../styles/post_css/addpost.css";
+// import "../styles/post_css/addpost.css";
+import "../styles/post_css/form.css"
+import Postsidebar from "./postView";
 
 export default function Allprojects() {
    const [username, setusername] = useState([]);
@@ -39,7 +41,7 @@ export default function Allprojects() {
 
     axios.post("http://localhost:8080/post/save", newpost).then(()=>{
       axios
-        .post(`http://localhost:8080/upload/postPic/${description}`, imageSave)
+        .post(`http://localhost:8080/upload/post/${description}`, imageSave)
         .then((res) => {
           alert("post successfully added");
         });
@@ -75,18 +77,19 @@ export default function Allprojects() {
 
         <NavBar />
         <div className="body-container clearfix">
-        <div className="n2"><b>Create New post</b></div>
-        <form className="createform" onSubmit={sendData}>   
+        <div className="p2"><b>Create New post</b></div>
+        <a href="/home" class="previous">&laquo; <i class="bi bi-arrow-return-left"></i>Back</a>
+        <form className="createpost" onSubmit={sendData}>   
         <div className='projectName-container'>
               <label for="userName"><b>User Name:</b></label> <br/>
-              <input type="text" id="userName"  className="values"  name="userName"  onChange={(event)=>{
+              <input type="text" id="userName"  className="postvalues"  name="userName"  onChange={(event)=>{
                   setusername(event.target.value);
               }} required/>
               </div><br/>
 
               <div className='discription-container'>
               <label for="discription"><b>Discription:</b></label><br/> 
-              <textarea type="textarea" id="discription" className="values1" name="discription"  onChange={(event)=>{
+              <textarea type="textarea" id="discription" className="postvalues1" name="discription"  onChange={(event)=>{
                   setdescription(event.target.value);
               }} required/>
               </div><br/>
@@ -114,12 +117,12 @@ export default function Allprojects() {
              
 
              
-              <input  type="submit" id="saveBtn"  value="SUBMIT"></input>
+              <input  type="submit" id="postsaveBtn"  value="SUBMIT"></input>
               </form>
         </div>
         
 
-        <Sidebar />
+        <Postsidebar />
     </div>
     
 
