@@ -82,9 +82,9 @@ export default function AllProjects() {
   <div key={index}>
     <div className="cardbody">
       <figure>
-      <div className="image-container">
+      {/* <div className="image-container">
           <img width="100%" src={`http://localhost:8080/get/image/${props.topic}`} alt={props.blog_title} />
-        </div>
+        </div> */}
         <figcaption>
           <Link to={"/edit/" + blog._id}>
             <EditIcon sx={{ marginTop: -10, marginLeft: 5, fontSize: 40, color: lightBlue[50] }} />
