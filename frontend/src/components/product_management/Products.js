@@ -49,21 +49,28 @@ export default function Allprojects() {
         <div className="products-main-container">
       <NavBar />
 
-      <div className="card-track">
-        {products.map((e, index) => (
-          <div key={index}>
-            <Card productname={e.productname} productprice={e.productprice} />
-            <a href={`/det/${e._id}`}>
 
-           
-              <button type="button" className="btn1">
-                VIEW
-              </button>
+
    
 
 
 
+      <div className="card-track">
+        {products.map((e, index) => (
+          <div key={index}>
+            <Card productname={e.productname} productprice={e.productprice} />
+            
+            
+            
+            
+            <a href={`/det/${e._id}`}>
+
+              <button type="button" className="btn1">
+                VIEW
+              </button>
             </a>
+
+            
           </div>
         ))}
       </div>

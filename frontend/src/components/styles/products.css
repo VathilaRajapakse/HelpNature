@@ -1,7 +1,10 @@
+
 .card-track{
     /* width: 100%;
     flex-direction: row; */
     text-align: center;
+    padding-top: 150px;
+    column-count: 2;
 }
 .clearfix {
     margin: 0;
@@ -27,4 +30,5 @@
 .clearfix {
     margin: 0;
 }
+
 

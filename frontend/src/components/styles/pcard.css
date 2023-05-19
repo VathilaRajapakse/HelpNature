@@ -2,6 +2,8 @@
 
   .pcard-main-container{
     height: 100%;
+    padding-left: 100px;
+    margin: auto;
   
     
   }
@@ -65,4 +67,6 @@
     background-color: #226101;
     color: white;
   }
+  
+
   
