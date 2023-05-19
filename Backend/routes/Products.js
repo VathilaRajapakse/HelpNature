@@ -1,6 +1,9 @@
 const express = require('express');
 const Products = require('../models/Products');
 
+const path = require("path");
+const fs =require("fs")
+
 const router = express.Router();
 
 //Save blogs
@@ -58,10 +61,12 @@ router.delete('/products/delete/:id',(req,res) =>{
     Products.findByIdAndRemove(req.params.id).exec((err,deletedProduct) =>{
 
         if(err) return res.status(400).json({
-            message:"Delete Unsuccessful",err
+            message:"Delete Unsuccessful",
+            err,
         });
-        return es.json({
-            message:"Delete Successful",deletedProduct
+        return res.json({
+            message:"Delete Successful",
+            deletedProduct,
         });
     });
 })
@@ -86,5 +91,36 @@ router.get('/products/:id',(req,res) =>{
    });
 });
 
+router.get("/get/image/:id", (req, res) => {
+    let imageId = req.params.id;
+  
+    const Path = path.resolve(
+      __dirname,
+      `../ProductphotoSave/${imageId}.png`
+    );
+    const Path2 = path.resolve(
+      __dirname,
+      `../ProductphotoSave/${imageId}.jpg`
+    );
+    
+  
+    fs.readFile(Path, function (err, data) {
+      if (err) {
+        fs.readFile(Path2, function (err, data) {
+          if (err) {
+            res.sendStatus(404).send("File not found")
+          } else {
+            res.writeHead(200, { ContentType: "image/jpg" });
+            res.end(data);
+          }
+          
+        });
+      } else {
+        res.writeHead(200, { ContentType: "image/png" });
+        res.end(data);
+      }
+      
+    });
+  });
 
 module.exports = router;
