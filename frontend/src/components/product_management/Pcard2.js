@@ -45,13 +45,24 @@ function Card(props) {
         <div className="product-price-container">
           <h4>{props.productprice}</h4>
         </div>
-      <div>
-        
-              
-        <a href= {`/det/${props._id}`}>
+
+        {/* <div>
+        <a className='btn btn-warning' href={`/edit/${_id}`}>
+                   <i className='fas fa-edit'></i>EDIT
+              </a>
+
+
+              &nbsp;&nbsp;
+              <a href="#">
+                                <button id="table-button" className="btn btn-outline-danger btn-sm" onClick={() => {deleteData(e)}}>
+                                    <i className="fas fa-trash-alt"></i>&nbsp;Delete
+                                </button>
+                              </a>
+        </div> */}
+     
+        {/* <a href= {`/det/${props._id}`}>
         <button type="button" class="btn1" >VIEW</button>
-        </a>
-        </div>
+        </a> */}
         
 
 
