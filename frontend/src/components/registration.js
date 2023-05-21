@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import NavBar from "./project_management/ProjectNavBar";
-import Sidebar from "./project_management/Sidebar";
-import { useParams} from "react-router-dom";
-import "./styles/project_css/navBar.css";
+import NavBar from "./blogs_managment/Blogs_navBar";
+import "../styles/registration.css";
+import Sidebar from "./blogs_managment/Sidebar";
 
-import "./styles/project_css/vform.css";
 
 export default function Registration() {
    const [fullname, setFname] = useState([]);
@@ -68,30 +66,26 @@ export default function Registration() {
         <div className="body-container clearfix">
      
         
-        <form className="createVform" onSubmit={sendData}>   
+        <form className="reg-form" onSubmit={sendData}>   
         <div className='projectName-container'>
-              <label for="fullName"><b>Full Name:</b></label> <br/>
-              <input type="text" id="fullName"  className="valuesV"  name="fullName"  onChange={(event)=>{
+              <label className = "reg-full-name"><b>Full Name:</b></label> <br/>
+              <input type="text" className="reg-name"  name="fullName"  onChange={(event)=>{
                   setFname(event.target.value);
               }} required/>
               </div><br/>
 
-              
-           
-           
-
-              
+                   
               <div className='time-container'>
-              <label for="address"><b>Address:</b></label> <br/>
-              <input type="text" id="address" className="valuesV"    name="address"  onChange={(event)=>{
+              <label className = "reg-address"><b>Address:</b></label> <br/>
+              <input type="text" id="address" className="reg-name"    name="address"  onChange={(event)=>{
                   setAddress(event.target.value);
               }} required/>
               </div><br/>
 
               
               <div className='location-container'>
-              <label for="contact"><b>Contact No:</b></label> <br/>  
-              <input type="text"  id="contact" className="valuesV"   name="contact"  onChange={(event)=>{
+              <label className = "reg-contact"><b>Contact No:</b></label> <br/>  
+              <input type="text"  id="contact" className="reg-contact-input"   name="contact"  onChange={(event)=>{
                   setContact(event.target.value);
               }} required/>
               </div><br/>
@@ -120,14 +114,22 @@ export default function Registration() {
               }} required/>
               </div><br/>
 
-              <input  type="submit" id="joinBtn"  value="Register"></input><br/><br/>
-              <lable className="l1"><b>Click here to add you details.</b></lable><br/>
+              <div className='discription-container'>
+              <label for="password"><b>Confirm Password:</b></label><br/> 
+              <input type="text" id="password" className="valuesV" name="password"  onChange={(event)=>{
+                  setpassword(event.target.value);
+              }} required/>
+              </div><br/>
+
+              <input  type="submit" id="joinBtn"  value="REGISTER"></input><br/><br/>
+              
             
               </form>
+              
         </div>
-        
+       
 
-        <Sidebar />
+        
     </div>
     
 

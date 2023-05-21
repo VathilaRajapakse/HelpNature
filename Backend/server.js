@@ -9,7 +9,7 @@ const productimages =require('./middleware/imageProducts');
 const app = express();
 
 //import routes
-const postRoutes = require('./routes/blog');
+const postRoutes = require('./routes/posts');
 const postRegister = require('./routes/register');
 const postVo = require('./routes/volunteer');
 const postProject= require('./routes/project');
@@ -44,11 +44,11 @@ res.json("Done");
 
 app.use("/upload/project/:nic", projimages.single("project"), function (req, res) {
     res.json("Done");   
-    });
+});
 
-    app.use("/upload/products/:nic", productimages.single("products"), function (req, res) {
-        res.json("Done");   
-        });
+app.use("/upload/products/:nic", productimages.single("products"), function (req, res) {
+    res.json("Done");   
+});
 
 
 
