@@ -1,11 +1,20 @@
+.button-container {
+  display: flex;
+}
+
+.button-container button {
+  flex: 1;
+}
+
 button {
     display: inline-block;
+    margin-bottom: 5px;
     padding: 2px 5px;
     font-size: 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #4c74af;
+    background-color: #086e4c;
     color: white;
     text-align: center;
     text-decoration: none;

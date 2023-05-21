@@ -71,9 +71,9 @@ function procard(props) {
 
        
         <div>
-         
-         <div>
-         
+      
+         {/* <div >
+        
             <button onClick={() => handleVote("yes")} disabled={voteSubmitted}>
               Yes
             </button>
@@ -84,8 +84,21 @@ function procard(props) {
               No
             </button>
           
-            </div>
-           
+            </div> */}
+            
+          <div className="button-container">
+           <button onClick={() => handleVote("yes")} disabled={voteSubmitted}>
+             Yes
+          </button>
+        <br/>
+        &nbsp;
+
+  
+         <button onClick={() => handleVote("no")} disabled={voteSubmitted}>
+              No
+         </button>
+        </div>
+
 
           {/* <p>
             Yes Percentage:{" "}

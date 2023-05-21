@@ -208,19 +208,18 @@ export default function Allprojects() {
           </h3>
         </div>
         <button className="post_create">
-          <a href="/All" style={{ textDecoration: "none", color: "white" }}>
+          <a href="/" style={{ textDecoration: "none", color: "white" }}>
             + ADD NEW POSTS
           </a>
         </button>
-        {/* {posts &&
+        {posts &&
 
           posts.filter(e =>
             e.username.toLowerCase().includes(serQuary) ||
 
-            e.username.includes(serQuary)  */}
+            e.username.includes(serQuary) 
 
-        {posts &&
-          posts.map((post, index) => (
+        ).map((post, index) => (
             <Card
               key={index}
               username={post.username}

@@ -19,8 +19,8 @@ export default function App() {
               {/* <Route path="/allpost" element={<Allpost/>} /> */}
               
               <Route path="/home" element={<HomePost/>} />
-              <Route path="/" element={<Login/>} />
-              <Route path="/All" element={<CreatePost/>} />
+              <Route path="/All" element={<Login/>} />
+              <Route path="/" element={<CreatePost/>} />
               <Route path="/update/:id" element={<Update/>} />
               <Route path="/changes" element={<MyPosts/>} />
               <Route path="/registration" element={<Registration/>}></Route>
