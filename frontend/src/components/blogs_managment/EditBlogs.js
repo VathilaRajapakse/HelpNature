@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "../../styles/formedit.css";
-import NavBar from "./Blogs_navBar";
-import Sidebar from "./Sidebar";
+import NavBar from "../Navbar";
+import Sidebar from "../product_management/Sidebar";
 
 export default function Update() {
   const { id } = useParams();
@@ -14,7 +14,7 @@ export default function Update() {
   const [fileUpload, setFileUpload] = useState();
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/post/${id}`).then((response) => {
+    axios.get(`http://localhost:8080/blog/${id}`).then((response) => {
       const post = response.data.post;
       setblog(post.blog_title);
       setdes(post.description);
@@ -29,7 +29,7 @@ export default function Update() {
       blogger_name,
     };
     axios
-      .put(`http://localhost:8080/post/update/${id}`, data)
+      .put(`http://localhost:8080/blog/update/${id}`, data)
       .then(() => {
         alert("Update Successful");
       })
