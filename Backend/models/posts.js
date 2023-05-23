@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
-    blogger_name:{
-        type:String,
-        required:true
-    },
 
     blog_title:{
         type:String,
@@ -13,12 +9,7 @@ const postSchema = new mongoose.Schema({
     description:{
         type:String,
         required:true
-    },
-    // image:{
-    //     type:String,
-    //     required:true
-    // },
-    
+    }
 
 });
 
