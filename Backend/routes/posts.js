@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 //Save blogs
-router.post("/post/save", (req, res) => {
+router.post("/blog/save", (req, res) => {
   let newPost = new Posts(req.body);
 
   newPost.save((err) => {
@@ -22,7 +22,7 @@ router.post("/post/save", (req, res) => {
 });
 
 //get blogs
-router.get("/posts", (req, res) => {
+router.get("/blog", (req, res) => {
   Posts.find().exec((err, posts) => {
     if (err) {
       return res.status(400).json({
@@ -37,7 +37,7 @@ router.get("/posts", (req, res) => {
 });
 
 //get specific blogs
-router.get("/post/:id", (req, res) => {
+router.get("/blog/:id", (req, res) => {
   let postId = req.params.id;
 
   Posts.findById(postId, (err, post) => {
@@ -52,7 +52,7 @@ router.get("/post/:id", (req, res) => {
 });
 
 //Update blogs
-router.put("/post/update/:id", (req, res) => {
+router.put("/blog/update/:id", (req, res) => {
   Posts.findByIdAndUpdate(
     req.params.id,
     {
@@ -70,7 +70,7 @@ router.put("/post/update/:id", (req, res) => {
 });
 
 //delete blogs
-router.delete("/post/delete/:id", (req, res) => {
+router.delete("/blog/delete/:id", (req, res) => {
   Posts.findByIdAndRemove(req.params.id).exec((err, deletedPost) => {
     if (err)
       return res.status(400).json({
@@ -78,7 +78,7 @@ router.delete("/post/delete/:id", (req, res) => {
         err,
       });
     return res.json({
-      message: "Delete Successful",
+      // message: "Delete Successful",
       deletedPost,
     });
   });
@@ -88,21 +88,14 @@ router.delete("/post/delete/:id", (req, res) => {
 router.get("/get/image/:id", (req, res) => {
   let imageId = req.params.id;
 
-  const Path = path.resolve(
-    __dirname,
-    `../photoSave/${imageId}.png`
-  );
-  const Path2 = path.resolve(
-    __dirname,
-    `../photoSave/${imageId}.jpg`
-  );
-  
+  const Path = path.resolve(__dirname, `../photoSave/${imageId}.png`);
+  const Path2 = path.resolve(__dirname, `../photoSave/${imageId}.jpg`);
 
   fs.readFile(Path, function (err, data) {
     if (err) {
       fs.readFile(Path2, function (err, data) {
         if (err) {
-          res.sendStatus(404).send("File not found")
+          res.sendStatus(404).send("File not found");
         } else {
           res.writeHead(200, { ContentType: "image/jpg" });
           res.end(data);
