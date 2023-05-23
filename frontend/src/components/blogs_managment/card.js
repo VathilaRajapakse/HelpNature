@@ -3,38 +3,45 @@ import axios from "axios";
 import LikeButton from "../blogs_managment/likebutton";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "../../styles/card.css";
+import Rating from "@mui/material/Rating";
 
 function Card(props) {
   // Use object destructuring to initialize state variables
   const [seeMore, setSeeMore] = useState(true);
   const [blogs, setBlogs] = useState([]);
-  //const [userName, setUserName] = useState(localStorage.getItem("userName"));
-
-  // useEffect(() => {
-  //   // Move function inside useEffect to prevent it from being called on every render
-  //   async function getBlogs() {
-  //     try {
-  //       const response = await axios.get("http://localhost:8080/posts/");
-  //       setBlogs(response.data.existingPosts);
-  //     } catch (error) {
-  //       alert(error.message);
-  //     }
-  //   }
-  //   getBlogs(); // Call the function inside useEffect
-  // }, []); // Add an empty dependency array to run this effect only once on mount
-
-  // Define the deleteData function
-  // const deleteData = async (e) => {
-  //   try {
-  //     const confirmed = window.confirm("Are You Sure, You want to delete this ?");
-  //     if (confirmed) {
-  //       await axios.delete(`http://localhost:8080/post/delete/${e._id}`);
-  //       window.location.reload(false);
-  //     }
-  //   } catch (error) {
-  //     alert(error.message);
-  //   }
-  // };
+  const [value, setValue] = React.useState(0);
+  const [active, setActive] = useState(false);
+  const [rating, setRating] = useState({});
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/rating/details/${props.id}`)
+      .then((res) => {
+        setRating(res.data.data[0]);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+    }, [value]);
+    
+    
+  const ratinghandler = (event, value) => {
+    console.log(value);
+    setValue(value);
+    const data = {
+      blogID: props.id,
+      blogName: props.topic,
+      rating: value,
+    };
+    axios
+      .post(`http://localhost:8080/rating/save`,data)
+      .then((res) => {
+        alert(res.data.message)
+        // setRating(res.data.data);
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+  };
 
   return (
     <div>
@@ -46,7 +53,11 @@ function Card(props) {
       <div className="card-container">
         {/* Use props to access data passed down from the parent component */}
         <div className="image-container">
-          <img width="100%" src={`http://localhost:8080/get/image/${props.topic}`} alt={props.blog_title} />
+          <img
+            width="100%"
+            src={`http://localhost:8080/get/image/${props.topic}`}
+            alt={props.blog_title}
+          />
         </div>
         <div className="topic-container">
           <h4>{props.topic}</h4>
@@ -57,7 +68,19 @@ function Card(props) {
         </div>
         <div className="action-container">
           {/* Render the LikeButton component */}
-          <LikeButton />
+          <Rating
+        
+            name="simple-controlled"
+            value={value}
+            onChange={(event, newValue) => {
+              ratinghandler(event, newValue);
+            }}
+            readOnly={active}
+          />
+          
+          {rating&&<><h5>{rating.avg}/5</h5></>}
+
+          {/* <LikeButton /> */}
           <button className="Read-more" onClick={() => setSeeMore(!seeMore)}>
             {seeMore ? "Read more" : "Less more"}
           </button>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import NavBar from "./Blogs_navBar";
-import Sidebar from "./Sidebar";
+import NavBar from "../Navbar";
+import Sidebar from "../product_management/Sidebar";
 import "../../styles/form.css";
 
 export default function CreateBlogs() {
@@ -46,7 +46,7 @@ export default function CreateBlogs() {
       const imageSave = new FormData();
       imageSave.append("blogPic", fileUpload);
 
-      axios.post("http://localhost:8080/post/save", data).then((res) => {
+      axios.post("http://localhost:8080/blog/save", data).then((res) => {
         axios
           .post(`http://localhost:8080/upload/blogPic/${blog_title}`, imageSave)
           .then((res) => {

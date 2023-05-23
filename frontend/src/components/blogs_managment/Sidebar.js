@@ -1,6 +1,6 @@
 import React from 'react';
-import "../../styles/navBar.css";
-
+import "../../styles/sidebar.css";
+import AllProjects from './BlogView';
 
 
 export default function Sidebar() {
@@ -8,17 +8,12 @@ export default function Sidebar() {
 
     
 
-    return <div className="nav_main_container">
+    return <div className="side_main_container">
 
       
            
-           
-                
+           <AllProjects/>
 
-
-            
-        
-        
         </div>
 
 }
