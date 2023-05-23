@@ -49,10 +49,18 @@
     margin-top: 1px;
 }
 
+<<<<<<< HEAD
 .order-table-row:hover {
+=======
+/* .order-table-row:hover {
+>>>>>>> main
     transform: scale(1.0);
     background-color: rgba(94, 210, 11, 0.071);
 }
 .abc{
     text-align: center;
+<<<<<<< HEAD
 }
+=======
+} */
+>>>>>>> main
