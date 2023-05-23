@@ -14,7 +14,7 @@ const postRegister = require("./routes/register");
 const postVo = require("./routes/volunteer");
 const postProject = require("./routes/project");
 const postProducts = require("./routes/Products");
-const postsRoutes = require("./routes/posts");
+const postsRoutes = require("./routes/blog");
 const rating = require("./routes/rating")
 //app middleware
 app.use(bodyParser.json());
