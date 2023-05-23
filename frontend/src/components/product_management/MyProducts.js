@@ -13,8 +13,6 @@ function refreshPage(){
 export default function Pro() {
   const [products, setproducts] = useState([]);
 
-  //  const {id} = useParams();
-
    useEffect(() => {
        function getproducts() {
       
