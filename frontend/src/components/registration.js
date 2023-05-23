@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import NavBar from "./blogs_managment/Blogs_navBar";
+import NavBar from "./Navbar";
 import "../styles/registration.css";
 import Sidebar from "./blogs_managment/Sidebar";
 
