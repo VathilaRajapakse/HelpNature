@@ -4,10 +4,7 @@ import axios from "axios";
 import "../styles/myproducts.css"
 import NavBar from "../Navbar";
 import Sidebar from "./Sidebar";
-
 import Card from "./Pcard2"
-
-
 
 function refreshPage(){
   window.location.reload(false);
@@ -15,7 +12,6 @@ function refreshPage(){
 
 export default function Pro() {
   const [products, setproducts] = useState([]);
-
 
   //  const {id} = useParams();
 
@@ -66,6 +62,8 @@ const deleteData = (e) => {
     <div className="product-cards">
        <div className="card-track">
            
+
+
            {products.map((e, index) =>(
             <div>
               <Card productname={e.productname} productdescription={e.productdescription}  productprice={e.productprice} id={e.id} /> 
@@ -87,7 +85,7 @@ const deleteData = (e) => {
           </div>
            ))}
                   
-           
+           //
          
        </div>
        </div>
